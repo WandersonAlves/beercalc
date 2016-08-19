@@ -1,0 +1,27 @@
+{
+  "name": "beercalc",
+  "version": "1.0.0",
+  "description": "Aplicativo beercalc",
+  "main": "server.js",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.0",
+    "gulp-clean-css": "^2.0.6",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-copy2": "^0.2.0",
+    "gulp-html-replace": "^1.5.5",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-util": "^3.0.7",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "jasmine-spec-reporter": "^2.4.0",
+    "karma": "^1.2.0",
+    "protractor": "^3.0.0",
+    "run-sequence": "^1.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wanderson Alves",
+  "license": "ISC"
+}
