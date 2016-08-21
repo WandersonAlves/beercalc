@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Beer Calc!!!</title>
+    <title>BeerCalc!!!</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -15,19 +15,47 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- build:css -->
-
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <!-- endbuild -->
 </head>
 
-<body>
-    <md-nav-bar md-selected-nav-item="currPage" nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-click="" ui-sref="profile" name="profile">Perfil</md-nav-item>
-        <md-nav-item md-nav-click="" ui-sref="bills" name="bills">Contas</md-nav-item>
-        <md-nav-item md-nav-click="" ui-sref="options" name="options">Opções</md-nav-item>
-    </md-nav-bar>
-
-    <ui-view></ui-view>
+<body layout="column" ng-cloak ng-controller="NavigationController as navController">
+    <md-toolbar md-scroll-shrink>
+        <div layout="row">
+            <md-button ng-click="navController.toggleLeft()" class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
+            </md-button>
+            <div class="md-toolbar-tools">{{navController.currentState}}</div>
+        </div>
+    </md-toolbar>
+    <div class="container" layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+            <md-toolbar class="md-theme-indigo">
+                <h3 class="md-toolbar-tools">Navegação</h3>
+            </md-toolbar>
+            <md-content layout-padding>
+                <md-list>
+                    <md-list-item ui-sref="profile" ng-click="navController.close('Perfil')">
+                        <md-icon md-svg-icon="res/svg/ic_account_circle_white_24px.svg"></md-icon>
+                        <p>Perfil</p>
+                    </md-list-item>
+                    <md-list-item ui-sref="bills" ng-click="navController.close('Contas')">
+                        <md-icon md-svg-icon="res/svg/ic_payment_white_24px.svg"></md-icon>
+                        <p>Contas</p>
+                    </md-list-item>
+                    <md-list-item ui-sref="options" ng-click="navController.close('Opções')">
+                        <md-icon md-svg-icon="res/svg/ic_settings_white_24px.svg"></md-icon>
+                        <p>Opções</p>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content flex layout-padding>
+            <div layout="column">
+                <ui-view></ui-view>
+            </div>
+        </md-content>
+    </div>
 
     <!-- build:js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -41,6 +69,8 @@
     <script src="beercalc.module.js"></script>
     <script src="beercalc.config.js"></script>
     <script src="beercalc.routes.js"></script>
+    <script src="/controllers/navigation.controller.js"></script>
     <!-- endbuild -->
 </body>
+
 </html>
