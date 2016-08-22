@@ -15,17 +15,30 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#e97f02">
     <!-- build:css -->
+    <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
+    <link rel="stylesheet" href="/res/css/splash.css">
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <!-- endbuild -->
 </head>
 
 <body layout="column" ng-cloak ng-controller="NavigationController as navController">
+    <!-- Splash Screen done RIGHT!!!-->
+    <!-- Uses /res/css/splash.css to animate the spinner and hide body when application isn't loaded -->
+    <script type="text/javascript" src="/bower_components/please-wait/build/please-wait.min.js"></script>
+    <script type="text/javascript">
+     window.loading_screen = window.pleaseWait({
+       logo: "res/logo.png",
+       backgroundColor: '#e97f02',
+       loadingHtml: "<div class='spinner'><div class='dot1'></div><div class='dot2'></div></div>"
+     });
+   </script>
+   <!-- ///Splash Screen done RIGHT!!!-->
     <md-toolbar md-scroll-shrink md-whiteframe="8">
-        <div layout="row">
-            <md-button ng-click="navController.toggleLeft()" class="md-icon-button" aria-label="Settings">
-                <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
-            </md-button>
-            <div class="md-toolbar-tools">{{navController.currentState}}</div>
+        <div class="md-toolbar-tools">
+              <md-button ng-click="navController.toggleLeft()" class="md-icon-button" aria-label="Settings">
+                  <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
+              </md-button>
+              <h2><span class="md-title">{{navController.currentState}}</span></h2>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
