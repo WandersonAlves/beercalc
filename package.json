@@ -12,6 +12,7 @@
     "gulp-copy2": "^0.2.0",
     "gulp-html-replace": "^1.5.5",
     "gulp-imagemin": "^3.0.1",
+    "gulp-insert-lines": "0.0.4",
     "gulp-util": "^3.0.7",
     "imagemin-jpeg-recompress": "^5.1.0",
     "jasmine-spec-reporter": "^2.4.0",

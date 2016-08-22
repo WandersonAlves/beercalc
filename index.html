@@ -22,12 +22,25 @@
 </head>
 
 <body layout="column" ng-cloak ng-controller="NavigationController as navController">
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAryr8HwUx6BawW1DY7_nmaKzIudbafGEk",
+            authDomain: "beercalc-df82c.firebaseapp.com",
+            databaseURL: "https://beercalc-df82c.firebaseio.com",
+            storageBucket: "beercalc-df82c.appspot.com",
+        };
+        firebase.initializeApp(config);
+    </script>
+    <!-- /firebase -->
     <md-toolbar md-scroll-shrink md-whiteframe="8">
         <div class="md-toolbar-tools">
-              <md-button ng-click="navController.toggleLeft()" class="md-icon-button" aria-label="Settings">
-                  <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
-              </md-button>
-              <h2><span class="md-title">{{navController.currentState}}</span></h2>
+            <md-button ng-click="navController.toggleLeft()" class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
+            </md-button>
+            <h2><span class="md-title">{{navController.currentState}}</span></h2>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
