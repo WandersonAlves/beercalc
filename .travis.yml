@@ -15,12 +15,9 @@ addons:
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
   - npm install -g gulp
   - npm install -g bower
-  - npm i
   - gulp build
-  - sleep 1
   - /home/travis/build/WandersonAlves/neweb/node_modules/protractor/bin/webdriver-manager update
 script:
   # Add Karma and Protractor commands like the ones above
