@@ -18,18 +18,6 @@ gulp.task('default', function () {
 gulp.task('build-js', function () {
 	'use strict';
 	return gulp.src([
-      "bower_components/please-wait/build/please-wait.min.js",
-      "controllers/loading-screen.controller.js",
-      "bower_components/please-wait/build/please-wait.min.js",
-      "controllers/loading-screen.controller.js",
-      "bower_components/jquery/dist/jquery.min.js",
-      "bower_components/angular/angular.js",
-      "bower_components/angular-ui-router/release/angular-ui-router.js",
-      "bower_components/angular-aria/angular-aria.js",
-      "bower_components/angular-animate/angular-animate.js",
-      "bower_components/angular-material/angular-material.js",
-      "bower_components/bootstrap/dist/js/bootstrap.min.js",
-      "bower_components/bootstrap/js/collapse.js",
       "beercalc.module.js",
       "beercalc.config.js",
       "beercalc.routes.js",
@@ -42,6 +30,19 @@ gulp.task('build-splash', function () {
       "bower_components/please-wait/build/please-wait.min.js",
       "controllers/loading-screen.controller.js"
     ]).pipe(concat('splash.js')).pipe(gulp.dest('public/'));
+});
+gulp.task('build-vendor', function () {
+	'use strict';
+	return gulp.src([
+    "bower_components/jquery/dist/jquery.min.js",
+    "bower_components/angular/angular.js",
+    "bower_components/angular-ui-router/release/angular-ui-router.js",
+    "bower_components/angular-aria/angular-aria.js",
+    "bower_components/angular-animate/angular-animate.js",
+    "bower_components/angular-material/angular-material.js",
+    "bower_components/bootstrap/dist/js/bootstrap.min.js",
+    "bower_components/bootstrap/js/collapse.js"
+  ]).pipe(concat('vendor.js')).pipe(gulp.dest('public/'));
 });
 
 gulp.task('build-css', function () {
@@ -81,7 +82,8 @@ gulp.task('html-replace', function () {
 		.pipe(htmlreplace({
 			'css': 'build.css',
 			'splash': 'splash.js',
-			'js': 'build.js'
+			'js': 'build.js',
+      'vendor': 'vendor.js'
 		})).pipe(gulp.dest('public/'));
 });
 
@@ -98,7 +100,7 @@ gulp.task('image-min', function () {
 
 gulp.task('build', function () {
 	'use strict';
-	runSequence('build-js', 'build-css', 'copy', 'html-replace');
+	runSequence('build-splash', 'build-vendor', 'build-js', 'build-css', 'copy', 'html-replace');
 });
 
 gulp.task('server', function () {
