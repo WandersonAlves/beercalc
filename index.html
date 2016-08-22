@@ -22,17 +22,6 @@
 </head>
 
 <body layout="column" ng-cloak ng-controller="NavigationController as navController">
-    <!-- Splash Screen done RIGHT!!!-->
-    <!-- Uses /res/css/splash.css to animate the spinner and hide body when application isn't loaded -->
-    <script type="text/javascript" src="/bower_components/please-wait/build/please-wait.min.js"></script>
-    <script type="text/javascript">
-     window.loading_screen = window.pleaseWait({
-       logo: "res/logo.png",
-       backgroundColor: '#e97f02',
-       loadingHtml: "<div class='spinner'><div class='dot1'></div><div class='dot2'></div></div>"
-     });
-   </script>
-   <!-- ///Splash Screen done RIGHT!!!-->
     <md-toolbar md-scroll-shrink md-whiteframe="8">
         <div class="md-toolbar-tools">
               <md-button ng-click="navController.toggleLeft()" class="md-icon-button" aria-label="Settings">
@@ -71,18 +60,20 @@
     </div>
 
     <!-- build:js -->
+    <script src="bower_components/please-wait/build/please-wait.min.js"></script>
+    <script src="controllers/loading-screen.controller.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/bower_components/angular-aria/angular-aria.js"></script>
-    <script src="/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/bootstrap/js/collapse.js"></script>
     <script src="beercalc.module.js"></script>
     <script src="beercalc.config.js"></script>
     <script src="beercalc.routes.js"></script>
-    <script src="/controllers/navigation.controller.js"></script>
+    <script src="controllers/navigation.controller.js"></script>
     <!-- endbuild -->
 </body>
 
