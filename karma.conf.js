@@ -13,6 +13,7 @@ module.exports = function(config) {
     files: [
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/angular/angular.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-aria/angular-aria.js',
       'bower_components/angular-animate/angular-animate.js',
@@ -21,7 +22,6 @@ module.exports = function(config) {
       'beercalc.config.js',
       'beercalc.routes.js',
       'controllers/**/*.js',
-      'node_modules/angular-mocks/angular-mocks.js',
       'test/**/*.js'
     ],
     // list of files to exclude
@@ -31,7 +31,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        "!(bower_components|node_modules|public|reports)/**/!(*.spec).js": ["coverage"],
+        "!(bower_components|node_modules|public|reports|test)/**/!(*.spec).js": ["coverage"],
         "**/*.html": ["ng-html2js"]
     },
     // test results reporter to use
@@ -76,7 +76,7 @@ module.exports = function(config) {
     autoWatch: true,
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS', 'Chrome'],
+    browsers: ['PhantomJS'],
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
