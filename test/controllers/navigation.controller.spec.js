@@ -10,11 +10,17 @@
 			navController = new $controller('NavigationController', {$scope: scope});
 		}));
 
-		it("vm.perfil should be equal 'Perfil' on first load", function () {
+		it("vm.currentState should be equal 'Perfil' on first load", function () {
       //expect(scope).toBeDefined();
       expect(navController.currentState).toBeDefined();
 			expect(navController.currentState).toEqual('Perfil');
-		})
+		});
+
+    it("close function should change vm.currentState value", function () {
+      //expect(scope).toBeDefined();
+      navController.close('Home');
+			expect(navController.currentState).toEqual('Home');
+		});
 	});
 
 })();
