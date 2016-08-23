@@ -1,0 +1,26 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "6.1"
+branches:
+  only:
+  - master
+addons:
+  apt:
+    sources:
+        - google-chrome
+    packages:
+        - google-chrome-stable
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - npm install -g gulp
+  - npm install -g bower
+  - gulp build
+  - /home/travis/build/WandersonAlves/neweb/node_modules/protractor/bin/webdriver-manager update
+script:
+  # Add Karma and Protractor commands like the ones above
+  #- protractor spec/web-conf.js
+  #- protractor spec/mobile-conf.js
+after_script:
