@@ -24,6 +24,7 @@ before_script:
   - npm install -g gulp
   - npm install -g bower
   - npm install -g codeclimate-test-reporter
+  - bower install
   - gulp build
   # - /home/travis/build/WandersonAlves/neweb/node_modules/protractor/bin/webdriver-manager update
 script:
