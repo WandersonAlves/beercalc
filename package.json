@@ -17,12 +17,17 @@
     "imagemin-jpeg-recompress": "^5.1.0",
     "jasmine-spec-reporter": "^2.4.0",
     "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-ng-html2js-preprocessor": "^1.0.0",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26",
     "protractor": "^3.0.0",
     "run-sequence": "^1.1.5"
   },
   "scripts": {
-
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start --single-run --browsers Chrome"
   },
   "author": "Wanderson Alves",
   "license": "ISC"

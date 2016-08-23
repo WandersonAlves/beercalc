@@ -13,7 +13,7 @@ addons:
     packages:
         - google-chrome-stable
   code_climate:
-        repo_token: 3e1b7ee31d2428a76f79e2e71d75540299ec27adf489048256aa16b2f1afd355
+        repo_token: CODE_CLIMATE_TOKEN
 cache:
   directories:
     - node_modules
@@ -23,6 +23,7 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - npm install -g gulp
   - npm install -g bower
+  - npm install -g codeclimate-test-reporter
   - gulp build
   # - /home/travis/build/WandersonAlves/neweb/node_modules/protractor/bin/webdriver-manager update
 script:
@@ -30,4 +31,4 @@ script:
   #- protractor spec/web-conf.js
   #- protractor spec/mobile-conf.js
 after_script:
-  - codeclimate-test-reporter < lcov.info
+  - codeclimate-test-reporter < reports/coverage/lcov.info
