@@ -4,6 +4,7 @@
   "description": "Aplicativo beercalc",
   "main": "server.js",
   "devDependencies": {
+    "angular-mocks": "^1.5.8",
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.0",
     "gulp-clean-css": "^2.0.6",
@@ -27,7 +28,7 @@
     "run-sequence": "^1.1.5"
   },
   "scripts": {
-    "test": "karma start --single-run --browsers Chrome"
+    "test": "karma start --single-run --browsers PhantomJS"
   },
   "author": "Wanderson Alves",
   "license": "ISC"

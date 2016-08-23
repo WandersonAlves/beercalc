@@ -28,7 +28,8 @@ module.exports = function(config) {
       'beercalc.module.js',
       'beercalc.config.js',
       'beercalc.routes.js',
-      'controllers/navigation.controller.js',
+      'controllers/**/*.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'test/**/*.js'
     ],
 
