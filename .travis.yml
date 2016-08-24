@@ -32,4 +32,4 @@ script:
   #- protractor spec/web-conf.js
   #- protractor spec/mobile-conf.js
 after_script:
-  - codeclimate-test-reporter < reports/coverage/lcov.info
+  - CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < reports/coverage/lcov.info
