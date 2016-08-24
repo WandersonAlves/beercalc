@@ -12,8 +12,8 @@ addons:
         - google-chrome
     packages:
         - google-chrome-stable
-  code_climate:
-        repo_token: CODE_CLIMATE_TOKEN
+    code_climate:
+        repo_token: CODECLIMATE_REPO_TOKEN
 cache:
   directories:
     - node_modules
@@ -25,11 +25,11 @@ before_script:
   - npm install -g bower
   - npm install -g codeclimate-test-reporter
   - bower install
-  - gulp build
+  #- gulp build
   # - /home/travis/build/WandersonAlves/neweb/node_modules/protractor/bin/webdriver-manager update
 script:
   # Add Karma and Protractor commands like the ones above
   #- protractor spec/web-conf.js
   #- protractor spec/mobile-conf.js
 after_script:
-  - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < reports/coverage/lcov.info
+  - codeclimate-test-reporter < reports/coverage/lcov.info
