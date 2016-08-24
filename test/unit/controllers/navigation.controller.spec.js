@@ -2,11 +2,12 @@
 	'use strict';
 
 	describe('controllers/navigation.controller.js', function () {
-		var navController, scope;
+		var navController, scope, state;
 		beforeEach(module("beercalc"));
 
-		beforeEach(inject(function ($rootScope, $controller) {
+		beforeEach(inject(function ($rootScope, $controller, $state) {
       scope = $rootScope.$new();
+      state = $state;
 			navController = new $controller('NavigationController', {$scope: scope});
 		}));
 
