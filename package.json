@@ -29,11 +29,14 @@
   },
   "scripts": {
     "test": "karma start --single-run --browsers PhantomJS",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "bower install && gulp build"
   },
   "author": "Wanderson Alves",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1"
   }
 }
