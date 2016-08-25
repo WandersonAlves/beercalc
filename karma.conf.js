@@ -31,6 +31,7 @@ module.exports = function (config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
+			"beercalc.routes.js": ["coverage"],
 			"!(bower_components|node_modules|public|reports|test)/**/!(*.spec).js": ["coverage"],
 			"**/*.html": ["ng-html2js"]
 		},
