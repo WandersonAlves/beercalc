@@ -26,6 +26,7 @@ before_script:
 script:
 after_script:
 - codeclimate-test-reporter < reports/coverage/lcov.info
+before_deploy: 'echo "bower_components" .gitignore'
 deploy:
   skip_cleanup: true
   provider: heroku
