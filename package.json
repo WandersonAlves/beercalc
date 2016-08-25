@@ -28,8 +28,12 @@
     "run-sequence": "^1.1.5"
   },
   "scripts": {
-    "test": "karma start --single-run --browsers PhantomJS"
+    "test": "karma start --single-run --browsers PhantomJS",
+    "start": "node server.js"
   },
   "author": "Wanderson Alves",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }

@@ -21,7 +21,8 @@ gulp.task('build-js', function () {
       "beercalc.module.js",
       "beercalc.config.js",
       "beercalc.routes.js",
-      "controllers/navigation.controller.js"
+      "controllers/navigation.controller.js",
+			"beercalc.run.js"
     ]).pipe(concat('build.js')).pipe(gulp.dest('public/'));
 });
 gulp.task('build-splash', function () {
@@ -83,7 +84,7 @@ gulp.task('html-replace', function () {
 			'css': 'build.css',
 			'splash': 'splash.js',
 			'js': 'build.js',
-      'vendor': 'vendor.js'
+			'vendor': 'vendor.js'
 		})).pipe(gulp.dest('public/'));
 });
 
