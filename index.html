@@ -14,6 +14,7 @@
     <meta name="msapplication-navbutton-color" content="#e97f02">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#e97f02">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <!-- build:css -->
     <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
     <link rel="stylesheet" href="/res/css/splash.css">
@@ -45,11 +46,22 @@
     </md-toolbar>
     <div class="container" layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
-            <md-toolbar class="md-theme-indigo">
-                <h3 class="md-toolbar-tools">Navegação</h3>
+            <md-toolbar class="md-theme-indigo" layout="row">
+                <md-list-item class="md-3-line" ng-click="null">
+                    <img class="md-avatar" ng-src="res/photos/profile.jpg" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>Popoto</h3>
+                        <h4>Bebedor Master</h4>
+                        <p>Nivel 20</p>
+                    </div>
+                </md-list-item>
             </md-toolbar>
             <md-content layout-padding>
                 <md-list>
+                    <md-list-item ui-sref="profile">
+                        <md-icon md-svg-icon="res/svg/ic_home_white_24px.svg"></md-icon>
+                        <p>Home</p>
+                    </md-list-item>
                     <md-list-item ui-sref="profile" ng-click="navController.close('Perfil')">
                         <md-icon md-svg-icon="res/svg/ic_account_circle_white_24px.svg"></md-icon>
                         <p>Perfil</p>
@@ -58,9 +70,18 @@
                         <md-icon md-svg-icon="res/svg/ic_payment_white_24px.svg"></md-icon>
                         <p>Contas</p>
                     </md-list-item>
-                    <md-list-item ui-sref="options" ng-click="navController.close('Opções')">
-                        <md-icon md-svg-icon="res/svg/ic_settings_white_24px.svg"></md-icon>
-                        <p>Opções</p>
+                    <md-list-item ui-sref="bills">
+                        <md-icon md-svg-icon="res/svg/ic_more_white_24px.svg"></md-icon>
+                        <p>Recomendações</p>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                    <md-list-item ui-sref="options">
+                        <!-- <md-icon md-svg-icon="res/svg/ic_settings_white_24px.svg"></md-icon> -->
+                        <p>Configurações</p>
+                    </md-list-item>
+                    <md-list-item ui-sref="options">
+                        <!-- <md-icon md-svg-icon="res/svg/ic_settings_white_24px.svg"></md-icon> -->
+                        <p>Ajuda</p>
                     </md-list-item>
                 </md-list>
             </md-content>

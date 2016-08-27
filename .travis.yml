@@ -6,6 +6,8 @@ node_js:
 branches:
   only:
   - master
+notifications:
+  slack: barcalc:wbq6Qm07jiEVVJ5ZOnhR6mqu
 addons:
   apt:
     sources:

@@ -1,27 +1,40 @@
-(function () {
-	'use strict';
+(function() {
+    'use strict';
 
-	describe('controllers/navigation.controller.js', function () {
-		var navController, scope, state;
-		beforeEach(module("beercalc"));
+    describe('controllers/navigation.controller.js', function() {
+        var navController, scope, mdSidenav;
+        beforeEach(module("beercalc"));
 
-		beforeEach(inject(function ($rootScope, $controller, $state) {
-      scope = $rootScope.$new();
-      state = $state;
-			navController = new $controller('NavigationController', {$scope: scope});
-		}));
+        var sideNavCloseMock = jasmine.createSpy();
 
-		it("vm.currentState should be equal 'Perfil' on first load", function () {
-      //expect(scope).toBeDefined();
-      expect(navController.currentState).toBeDefined();
-			expect(navController.currentState).toEqual('Perfil');
-		});
+        beforeEach(inject(function($rootScope, $controller, $mdSidenav) {
+            scope = $rootScope.$new();
+            mdSidenav = jasmine.createSpy().and.callFake(function() {
+                return {
+                    close: sideNavCloseMock
+                };
+            });
+            navController = new $controller('NavigationController', {
+                $scope: scope,
+                $mdSidenav: mdSidenav
+            });
+        }));
 
-    it("close function should change vm.currentState value", function () {
-      //expect(scope).toBeDefined();
-      navController.close('Home');
-			expect(navController.currentState).toEqual('Home');
-		});
-	});
+        it("vm.currentState should be equal 'Perfil' on first load", function() {
+            //expect(scope).toBeDefined();
+            expect(navController.currentState).toBeDefined();
+            expect(navController.currentState).toEqual('Perfil');
+        });
+
+        it("close function should change vm.currentState value", function() {
+            navController.close('Home');
+            expect(navController.currentState).toEqual('Home');
+        });
+
+        it("when click on menu, should toggle sidenav", function() {
+            navController.toggleLeft();
+            expect(sideNavCloseMock).toHaveBeenCalled();
+        });
+    });
 
 })();

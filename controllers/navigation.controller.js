@@ -1,7 +1,7 @@
 (function () {
 	angular.module('beercalc').controller('NavigationController', NavigationController);
 
-	NavigationController.$inject = ['$scope', '$timeout', '$mdSidenav', '$state',];
+	NavigationController.$inject = ['$scope', '$timeout', '$mdSidenav', '$state'];
 
 	function NavigationController($scope, $timeout, $mdSidenav, $state) {
 		var vm = this;
@@ -9,15 +9,10 @@
 		vm.toggleLeft = buildDelayedToggler('left');
 		vm.close = close;
 		vm.currentState = 'Perfil';
-		vm.getCurrentState = getCurrentState;
 
 		function close(currentState) {
 			$mdSidenav('left').close();
 			vm.currentState = currentState || 'Perfil';
-		}
-
-		function getCurrentState() {
-			return $state.current.name;
 		}
 
 		function buildDelayedToggler(navID) {
