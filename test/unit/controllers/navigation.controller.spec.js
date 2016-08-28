@@ -27,6 +27,11 @@
             expect(navController.currentState).toEqual('Perfil');
         });
 
+        it("close function should change vm.currentState value even if someone call it without parameters", function(){
+            navController.close();
+            expect(navController.currentState).toEqual('Perfil');
+        });
+
         it("close function should change vm.currentState value", function() {
             navController.close('Home');
             expect(navController.currentState).toEqual('Home');
