@@ -11,7 +11,8 @@
             scope = $rootScope.$new();
             mdSidenav = jasmine.createSpy().and.callFake(function() {
                 return {
-                    close: sideNavCloseMock
+                    toggle: sideNavCloseMock,
+										close: sideNavCloseMock
                 };
             });
             navController = new $controller('NavigationController', {
@@ -32,7 +33,7 @@
         });
 
         it("when click on menu, should toggle sidenav", function() {
-            navController.toggleLeft();
+            navController.openLeftMenu();
             expect(sideNavCloseMock).toHaveBeenCalled();
         });
     });
