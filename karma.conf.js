@@ -45,10 +45,10 @@ module.exports = function (config) {
 			subdir: "coverage",
 			check: {
 				global: {
-					statements: 50,
-					branches: 0,
-					functions: 50,
-					lines: 50
+					statements: 90,
+					branches: 80,
+					functions: 90,
+					lines: 80
 				}
 			}
 		},
