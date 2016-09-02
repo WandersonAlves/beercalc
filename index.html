@@ -45,7 +45,7 @@
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
-        <md-sidenav class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
+        <md-sidenav md-swipe-left="navController.close()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
             <md-toolbar layout="column">
                 <md-list-item class="md-3-line" ng-click="null">
                     <img class="md-avatar" ng-src="res/photos/profile.jpg" />

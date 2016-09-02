@@ -1,23 +1,23 @@
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    concat = require('gulp-concat'),
-    concatCss = require('gulp-concat-css'),
-    cleanCss = require('gulp-clean-css'),
-    copy = require('gulp-copy2'),
-    runSequence = require('run-sequence'),
-    browserSync = require('browser-sync').create(),
-    htmlreplace = require('gulp-html-replace'),
-    imagemin = require('gulp-imagemin'),
-    imageminJpegRecompress = require('imagemin-jpeg-recompress');
+	gutil = require('gulp-util'),
+	concat = require('gulp-concat'),
+	concatCss = require('gulp-concat-css'),
+	cleanCss = require('gulp-clean-css'),
+	copy = require('gulp-copy2'),
+	runSequence = require('run-sequence'),
+	browserSync = require('browser-sync').create(),
+	htmlreplace = require('gulp-html-replace'),
+	imagemin = require('gulp-imagemin'),
+	imageminJpegRecompress = require('imagemin-jpeg-recompress');
 
-gulp.task('default', function() {
-    'use strict';
-    return gutil.log('Gulp is running!');
+gulp.task('default', function () {
+	'use strict';
+	return gutil.log('Gulp is running!');
 });
 // build js files uglifying and concating then
-gulp.task('build-js', function() {
-    'use strict';
-    return gulp.src([
+gulp.task('build-js', function () {
+	'use strict';
+	return gulp.src([
         "beercalc.module.js",
         "beercalc.config.js",
         "beercalc.routes.js",
@@ -25,16 +25,16 @@ gulp.task('build-js', function() {
         "beercalc.run.js"
     ]).pipe(concat('build.js')).pipe(gulp.dest('public/'));
 });
-gulp.task('build-splash', function() {
-    'use strict';
-    return gulp.src([
+gulp.task('build-splash', function () {
+	'use strict';
+	return gulp.src([
         "bower_components/please-wait/build/please-wait.min.js",
         "controllers/loading-screen.controller.js"
     ]).pipe(concat('splash.js')).pipe(gulp.dest('public/'));
 });
-gulp.task('build-vendor', function() {
-    'use strict';
-    return gulp.src([
+gulp.task('build-vendor', function () {
+	'use strict';
+	return gulp.src([
         "bower_components/jquery/dist/jquery.min.js",
         "bower_components/angular/angular.js",
         "bower_components/angular-ui-router/release/angular-ui-router.js",
@@ -46,71 +46,71 @@ gulp.task('build-vendor', function() {
     ]).pipe(concat('vendor.js')).pipe(gulp.dest('public/'));
 });
 
-gulp.task('build-css', function() {
-    'use strict';
-    return gulp.src([
+gulp.task('build-css', function () {
+	'use strict';
+	return gulp.src([
         "bower_components/please-wait/build/please-wait.css",
         "res/css/splash.css",
         "bower_components/angular-material/angular-material.css"
     ]).pipe(concatCss("build.css")).pipe(cleanCss({
-        compatibility: 'ie8'
-    })).pipe(gulp.dest('public/'));
+		compatibility: 'ie8'
+	})).pipe(gulp.dest('public/'));
 });
 
-gulp.task('copy', function() {
-    'use strict';
-    var paths = [{
-        src: 'res/logo.png',
-        dest: 'public/res/logo.png'
+gulp.task('copy', function () {
+	'use strict';
+	var paths = [{
+		src: 'res/logo.png',
+		dest: 'public/res/logo.png'
     }, {
-        src: 'res/svg/**',
-        dest: 'public/res/svg/'
+		src: 'res/svg/**',
+		dest: 'public/res/svg/'
     }, {
-        src: 'res/photos/**',
-        dest: 'public/res/photos/'
+		src: 'res/photos/**',
+		dest: 'public/res/photos/'
     }, {
-        src: 'views/**',
-        dest: 'public/views/'
+		src: 'views/**',
+		dest: 'public/views/'
     }];
-    // NOTE Use templateCache to keepViews inline
-    return copy(paths);
+	// NOTE Use templateCache to keepViews inline
+	return copy(paths);
 });
 
-gulp.task('html-replace', function() {
-    'use strict';
-    gulp.src('index.html')
-        .pipe(htmlreplace({
-            'css': 'build.css',
-            'splash': 'splash.js',
-            'js': 'build.js',
-            'vendor': 'vendor.js'
-        })).pipe(gulp.dest('public/'));
+gulp.task('html-replace', function () {
+	'use strict';
+	gulp.src('index.html')
+		.pipe(htmlreplace({
+			'css': 'build.css',
+			'splash': 'splash.js',
+			'js': 'build.js',
+			'vendor': 'vendor.js'
+		})).pipe(gulp.dest('public/'));
 });
 
-gulp.task('image-min', function() {
-    'use strict';
-    gulp.src(['res/assets/**/*'])
-        .pipe(imagemin([imagemin.gifsicle(), imagemin.jpegtran(), imagemin.optipng(), imagemin.svgo(), imageminJpegRecompress({
-            method: 'smallfry'
-        })], {
-            verbose: true
-        }))
-        .pipe(gulp.dest('public/res/assets'));
+gulp.task('image-min', function () {
+	'use strict';
+	gulp.src(['res/assets/**/*'])
+		.pipe(imagemin([imagemin.gifsicle(), imagemin.jpegtran(), imagemin.optipng(), imagemin.svgo(), imageminJpegRecompress({
+			method: 'smallfry'
+		})], {
+			verbose: true
+		}))
+		.pipe(gulp.dest('public/res/assets'));
 });
 
-gulp.task('build', function() {
-    'use strict';
-    runSequence('build-splash', 'build-vendor', 'build-js', 'build-css', 'copy', 'html-replace');
+gulp.task('build', function () {
+	'use strict';
+	runSequence('build-splash', 'build-vendor', 'build-js', 'build-css', 'copy', 'html-replace');
 });
 
-gulp.task('server', function() {
-    'use strict';
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        },
-        port: 8080
-    });
+gulp.task('server', function () {
+	'use strict';
+	browserSync.init({
+		server: {
+			baseDir: "./"
+		},
+		port: 8080
+	});
 
-    gulp.watch(["./**/*.js", "index.html"]).on('change', browserSync.reload);
+	gulp.watch(["./**/*.js", "./index.html", "./res/css/**/*.css"]).on('change', browserSync.reload);
 });
