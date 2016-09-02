@@ -1,11 +1,11 @@
-(function() {
-    angular
-        .module('beercalc')
-        .config(config);
+(function () {
+	angular
+		.module('beercalc')
+		.config(config);
 
-    config.$inject = ['$mdThemingProvider'];
+	config.$inject = ['$mdThemingProvider'];
 
-    function config($mdThemingProvider) {
-        $mdThemingProvider.theme('default').primaryPalette('deep-orange').dark();
-    }
+	function config($mdThemingProvider) {
+		$mdThemingProvider.theme('default').primaryPalette('deep-orange').dark();
+	}
 })();

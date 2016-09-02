@@ -18,24 +18,12 @@
     <!-- build:css -->
     <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
     <link rel="stylesheet" href="/res/css/splash.css">
+    <link rel="stylesheet" href="/res/css/style.css">
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <!-- endbuild -->
 </head>
 
 <body layout="column" ng-cloak ng-controller="NavigationController as navController">
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAryr8HwUx6BawW1DY7_nmaKzIudbafGEk",
-            authDomain: "beercalc-df82c.firebaseapp.com",
-            databaseURL: "https://beercalc-df82c.firebaseio.com",
-            storageBucket: "beercalc-df82c.appspot.com",
-        };
-        firebase.initializeApp(config);
-    </script>
-    <!-- /firebase -->
     <md-toolbar md-scroll-shrink md-whiteframe="8">
         <div class="md-toolbar-tools">
             <md-button ng-click="navController.openLeftMenu()" class="md-icon-button" aria-label="Settings">
@@ -48,11 +36,11 @@
         <md-sidenav md-swipe-left="navController.close()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
             <md-toolbar layout="column">
                 <md-list-item class="md-3-line" ng-click="null">
-                    <img class="md-avatar" ng-src="res/photos/profile.jpg" />
+                    <img class="md-avatar" ng-src="{{::navController.currentUser.avatar}}" />
                     <div class="md-list-item-text" layout="column">
-                        <h3>Popoto</h3>
-                        <h4>Bebedor Master</h4>
-                        <p>Nivel 20</p>
+                        <h3>{{::navController.currentUser.name}}</h3>
+                        <h4>{{::navController.currentUser.title}}</h4>
+                        <p>Nivel {{::navController.currentUser.level}}</p>
                     </div>
                 </md-list-item>
             </md-toolbar>
@@ -86,7 +74,7 @@
         </md-sidenav>
         <md-content flex layout-padding md-swipe-right="navController.openLeftMenu()">
             <div layout="column">
-                <ui-view></ui-view>
+                <main ui-view></main>
             </div>
         </md-content>
     </div>

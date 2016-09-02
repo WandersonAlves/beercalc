@@ -1,3 +1,3 @@
 (function () {
-	angular.module('beercalc', ['ngMaterial', 'ui.router']);
+	angular.module('beercalc', ['ngMaterial', 'ui.router', 'ngAnimate']);
 })();

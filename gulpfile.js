@@ -51,6 +51,7 @@ gulp.task('build-css', function () {
 	return gulp.src([
         "bower_components/please-wait/build/please-wait.css",
         "res/css/splash.css",
+				"res/css/style.css",
         "bower_components/angular-material/angular-material.css"
     ]).pipe(concatCss("build.css")).pipe(cleanCss({
 		compatibility: 'ie8'
@@ -112,5 +113,5 @@ gulp.task('server', function () {
 		port: 8080
 	});
 
-	gulp.watch(["./**/*.js", "./index.html", "./res/css/**/*.css"]).on('change', browserSync.reload);
+	gulp.watch(["./**/*.js", "./**/*.html", "./res/css/**/*.css"]).on('change', browserSync.reload);
 });
