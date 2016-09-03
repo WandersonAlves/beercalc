@@ -16,6 +16,7 @@
 			level: '20',
 			title: 'Brewmaster'
 		};
+    vm.currExp = 75;
 
 		function close(currentState) {
 			$mdSidenav('left').close();
