@@ -25,3 +25,10 @@ main.ng-enter-active {
     /* end with opacity 1 (fade in) */
     opacity: 1;
 }
+
+button,
+select,
+html,
+textarea,
+input {
+  font-family: 'Open Sans', sans-serif !important;}

@@ -14,7 +14,7 @@
     <meta name="msapplication-navbutton-color" content="#FF5722">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#FF5722">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!-- build:css -->
     <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
     <link rel="stylesheet" href="/res/css/splash.css">
@@ -26,14 +26,14 @@
 <body layout="column" ng-cloak ng-controller="NavigationController as navController">
     <md-toolbar md-scroll-shrink md-whiteframe="8">
         <div class="md-toolbar-tools">
-            <md-button ng-click="navController.openLeftMenu()" class="md-icon-button" aria-label="Settings">
+            <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
                 <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
             </md-button>
             <h2><span class="md-title">{{navController.currentState}}</span></h2>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
-        <md-sidenav md-swipe-left="navController.close()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
+        <md-sidenav md-swipe-left="navController.toggle()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
             <md-toolbar layout="column">
                 <md-list-item class="md-3-line" ng-click="null">
                     <img class="md-avatar" ng-src="{{::navController.currentUser.avatar}}" />
@@ -46,33 +46,23 @@
             </md-toolbar>
             <md-content layout-padding>
                 <md-list>
-                    <md-list-item class="md-body-1" ui-sref="profile">
-                        <md-icon md-svg-icon="res/svg/ic_home_white_24px.svg"></md-icon>
-                        <p>Home</p>
-                    </md-list-item>
-                    <md-list-item class="md-body-1" ui-sref="profile" ng-click="navController.close('Perfil')">
-                        <md-icon md-svg-icon="res/svg/ic_account_circle_white_24px.svg"></md-icon>
-                        <p>Perfil</p>
-                    </md-list-item>
-                    <md-list-item class="md-body-1" ui-sref="bills" ng-click="navController.close('Contas')">
-                        <md-icon md-svg-icon="res/svg/ic_payment_white_24px.svg"></md-icon>
-                        <p>Contas</p>
-                    </md-list-item>
-                    <md-list-item class="md-body-1" ui-sref="bills">
-                        <md-icon md-svg-icon="res/svg/ic_more_white_24px.svg"></md-icon>
-                        <p>Recomendações</p>
-                        <md-divider></md-divider>
-                    </md-list-item>
-                    <md-list-item class="md-body-1" ui-sref="options">
+                    <div ng-repeat="($index, menu) in navController.sideMenuOptions">
+                        <md-list-item class="md-body-1" ng-click="navController.goto(menu.sref)">
+                            <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
+                            <p>{{menu.label}}</p>
+                        </md-list-item>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-body-1" ng-click="navController.goto('options')">
                         <p>Configurações</p>
                     </md-list-item>
-                    <md-list-item class="md-body-1" ui-sref="options">
+                    <md-list-item class="md-body-1" ng-click="navController.goto('help')">
                         <p>Ajuda</p>
                     </md-list-item>
                 </md-list>
             </md-content>
         </md-sidenav>
-        <md-content flex layout-padding md-swipe-right="navController.openLeftMenu()">
+        <md-content flex layout-padding md-swipe-right="navController.toggle()">
             <div layout="column">
                 <main ui-view></main>
             </div>
@@ -100,6 +90,7 @@
     <script src="beercalc.config.js"></script>
     <script src="beercalc.routes.js"></script>
     <script src="beercalc.run.js"></script>
+    <script src="factories/side-menu.factory.js"></script>
     <script src="controllers/navigation.controller.js"></script>
     <!-- endbuild -->
 </body>

@@ -6,6 +6,9 @@
 		var PROFILE = 'profile';
 		var OPTIONS = 'options';
 		var BILLS = 'bills';
+		var HELP = 'help';
+		var HOME = 'home';
+		var SOCIAL = 'recomendations';
 
 		beforeEach(module("beercalc"));
 
@@ -15,6 +18,9 @@
 			$templateCache.put('/views/profile-view.html', '');
 			$templateCache.put('/views/options-view.html', '');
 			$templateCache.put('/views/bills-view.html', '');
+			$templateCache.put('/views/help-view.html', '');
+			$templateCache.put('/views/home-view.html', '');
+			$templateCache.put('/views/social-view.html', '');
 		}));
 
 		it("should respond to URL profile", function () {
@@ -45,6 +51,36 @@
 			state.go(BILLS);
 			rootScope.$digest();
 			expect(state.current.name).toEqual(BILLS);
+		});
+
+		it("should respond to URL home", function () {
+			expect(state.href(HOME, {})).toEqual('#/home');
+		});
+
+		it("should return name of route 'home'", function () {
+			state.go(HOME);
+			rootScope.$digest();
+			expect(state.current.name).toEqual(HOME);
+		});
+
+		it("should respond to URL help", function () {
+			expect(state.href(HELP, {})).toEqual('#/help');
+		});
+
+		it("should return name of route 'help'", function () {
+			state.go(HELP);
+			rootScope.$digest();
+			expect(state.current.name).toEqual(HELP);
+		});
+
+		it("should respond to URL social", function () {
+			expect(state.href(SOCIAL, {})).toEqual('#/social');
+		});
+
+		it("should return name of route 'social'", function () {
+			state.go(SOCIAL);
+			rootScope.$digest();
+			expect(state.current.name).toEqual(SOCIAL);
 		});
 	});
 })();

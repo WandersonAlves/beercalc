@@ -22,6 +22,7 @@ module.exports = function (config) {
       'beercalc.config.js',
       'beercalc.routes.js',
       'controllers/**/*.js',
+			'factories/**/*.js',
       'test/**/*.js'
     ],
 		// list of files to exclude
