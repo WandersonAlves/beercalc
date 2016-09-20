@@ -25,7 +25,7 @@
     "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.26",
-    "protractor": "^3.0.0",
+    "protractor": "^4.0.8",
     "run-sequence": "^1.1.5"
   },
   "scripts": {
