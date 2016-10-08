@@ -11,9 +11,16 @@
 		.module('beercalc')
 		.controller('NavigationController', NavigationController);
 
-	NavigationController.$inject = ['$scope', '$timeout', '$mdSidenav', '$state', 'SideMenuFactory'];
+	NavigationController.$inject = [
+		'$scope',
+		'$timeout',
+		'$mdSidenav',
+		'$state',
+		'SideMenuFactory',
+		'ProfileService'
+	];
 
-	function NavigationController($scope, $timeout, $mdSidenav, $state, SideMenuFactory) {
+	function NavigationController($scope, $timeout, $mdSidenav, $state, SideMenuFactory, ProfileService) {
 		var vm = this;
 		// NOTE Public functions
 		vm.toggle = toggle;
@@ -21,17 +28,7 @@
 		// NOTE Public attrs
 		// FIXME Set currentState value dynamically
 		vm.currentState = 'Home';
-		// TODO Get currentUser value from userService
-		vm.currentUser = {
-			avatar: 'res/photos/profile.jpg',
-			name: 'Wanderson Alves Ferreira',
-			level: '20',
-			title: 'Brewmaster'
-		};
-		// NOTE Mock value
-		vm.currExp = 62;
 
-		vm.sideMenuOptions = SideMenuFactory.constructSideMenu();
 		/**
 		 * @ngdoc function
 		 * @name beercalc.NavigationController:toggle
@@ -49,9 +46,38 @@
 		 * Change the actual state route of screen
 		 *
 		 */
-		function goto(state) {
-			$state.go(state);
+		function goto(menu) {
+			var label;
+			// TODO Refactor this
+			if (angular.isString(menu)) {
+				if (menu === 'options') {
+					label = 'Configurações';
+				} else if (menu == 'help') {
+					label = 'Ajuda';
+				}
+				$state.go(menu);
+			} else {
+				$state.go(menu.sref);
+			}
+			vm.currentState = menu.label || label;
 			toggle();
 		}
+		/**
+		 * @ngdoc function
+		 * @name beercalc.NavigationController:init
+		 * @description
+		 * Initialize the application
+		 *
+		 */
+		var init = function () {
+			vm.sideMenuOptions = SideMenuFactory.constructSideMenu();
+			ProfileService
+				.getLoggedUser()
+				.then(function (success) {
+					vm.currentUser = success.data;
+				}, function (error) {
+					vm.currentUser = undefined;
+				});
+		}();
 	}
 })();

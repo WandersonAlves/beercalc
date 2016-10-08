@@ -1,9 +1,9 @@
 <md-content layout-align="center center" layout="column">
-    <img class="avatar-img" ng-src="{{::navController.currentUser.avatar}}" />
+    <img class="avatar-img" ng-src="{{navController.currentUser.avatar}}" ng-if="navController.currentUser.avatar"/>
     <br/>
     <div class="line-height-10">
-        <p>{{::navController.currentUser.name}}</p>
-        <p>{{::navController.currentUser.title}}</p>
-        <md-progress-linear md-mode="determinate" value="{{navController.currExp}}"></md-progress-linear>
+        <p>{{navController.currentUser.name}}</p>
+        <p>{{navController.currentUser.title}}</p>
+        <md-progress-linear md-mode="determinate" value="{{navController.currentUser.currExp}}"></md-progress-linear>
     </div>
 </md-content>

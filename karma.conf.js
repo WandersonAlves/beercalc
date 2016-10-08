@@ -21,6 +21,7 @@ module.exports = function (config) {
 			'config/beercalc.module.js',
 			'config/beercalc.config.js',
 			'config/beercalc.routes.js',
+			'services/**/*.js',
 			'controllers/**/*.js',
 			'factories/**/*.js',
 			'test/**/*.js'
