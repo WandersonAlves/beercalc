@@ -11,24 +11,22 @@ module.exports = function (config) {
 		frameworks: ['jasmine'],
 		// list of files / patterns to load in the browser
 		files: [
-      'bower_components/jquery/dist/jquery.min.js',
-      'bower_components/angular/angular.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/angular-aria/angular-aria.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-material/angular-material.js',
-      'beercalc.module.js',
-      'beercalc.config.js',
-      'beercalc.routes.js',
-      'controllers/**/*.js',
+			'bower_components/jquery/dist/jquery.min.js',
+			'bower_components/angular/angular.js',
+			'node_modules/angular-mocks/angular-mocks.js',
+			'bower_components/angular-ui-router/release/angular-ui-router.js',
+			'bower_components/angular-aria/angular-aria.js',
+			'bower_components/angular-animate/angular-animate.js',
+			'bower_components/angular-material/angular-material.js',
+			'config/beercalc.module.js',
+			'config/beercalc.config.js',
+			'config/beercalc.routes.js',
+			'controllers/**/*.js',
 			'factories/**/*.js',
-      'test/**/*.js'
-    ],
+			'test/**/*.js'
+		],
 		// list of files to exclude
-		exclude: [
-      'controllers/loading-screen.controller.js'
-    ],
+		exclude: ['controllers/loading-screen.controller.js'],
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
@@ -39,7 +37,9 @@ module.exports = function (config) {
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		reporters: ['coverage', 'spec'],
+		reporters: [
+			'coverage', 'spec'
+		],
 		coverageReporter: {
 			type: "lcov",
 			dir: "reports",
@@ -60,13 +60,13 @@ module.exports = function (config) {
 			suppressSkipped: false
 		},
 		plugins: [
-        "karma-phantomjs-launcher",
-        "karma-chrome-launcher",
-        "karma-jasmine",
-        "karma-coverage",
-        "karma-spec-reporter",
-        "karma-ng-html2js-preprocessor"
-    ],
+			"karma-phantomjs-launcher",
+			"karma-chrome-launcher",
+			"karma-jasmine",
+			"karma-coverage",
+			"karma-spec-reporter",
+			"karma-ng-html2js-preprocessor"
+		],
 		// web server port
 		port: 9876,
 		// enable / disable colors in the output (reporters and logs)
