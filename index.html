@@ -15,7 +15,7 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#FF5722">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <!-- build:css -->
+    <!-- build:css main.css -->
     <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
     <link rel="stylesheet" href="/res/css/splash.css">
     <link rel="stylesheet" href="/res/css/style.css">
@@ -69,12 +69,10 @@
         </md-content>
     </div>
 
-    <!-- build:splash -->
+    <!-- build:js main.js -->
     <script src="bower_components/please-wait/build/please-wait.min.js"></script>
     <script src="controllers/loading-screen.controller.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:vendor -->
+    <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -83,13 +81,11 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/bootstrap/js/collapse.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js -->
-    <script src="beercalc.module.js"></script>
-    <script src="beercalc.config.js"></script>
-    <script src="beercalc.routes.js"></script>
-    <script src="beercalc.run.js"></script>
+    <!-- endbower -->
+    <script src="config/beercalc.module.js"></script>
+    <script src="config/beercalc.config.js"></script>
+    <script src="config/beercalc.routes.js"></script>
+    <script src="config/beercalc.run.js"></script>
     <script src="factories/side-menu.factory.js"></script>
     <script src="controllers/navigation.controller.js"></script>
     <!-- endbuild -->

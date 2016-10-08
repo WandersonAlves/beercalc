@@ -1,69 +1,38 @@
 var gulp = require('gulp'),
-	gutil = require('gulp-util'),
-	concat = require('gulp-concat'),
-	concatCss = require('gulp-concat-css'),
-	cleanCss = require('gulp-clean-css'),
 	copy = require('gulp-copy2'),
 	runSequence = require('run-sequence'),
 	browserSync = require('browser-sync').create(),
-	htmlreplace = require('gulp-html-replace'),
 	imagemin = require('gulp-imagemin'),
 	imageminJpegRecompress = require('imagemin-jpeg-recompress'),
-	clean = require('gulp-clean');
+	clean = require('gulp-clean'),
+	wiredep = require('wiredep').stream,
+	uglify = require('gulp-uglify'),
+	gulpif = require('gulp-if'),
+	minifyCss = require('gulp-minify-css'),
+	useref = require('gulp-useref'),
+	htmlreplace = require('gulp-html-replace'),
+	ngAnnotate = require('gulp-ng-annotate');
 
-gulp.task('default', function () {
-	'use strict';
-	return gutil.log('Gulp is running!');
-});
 // build js files uglifying and concating then
 gulp.task('build-js', function () {
 	'use strict';
 	return gulp
-		.src([
-		"beercalc.module.js",
-		"beercalc.config.js",
-		"beercalc.routes.js",
-		"beercalc.run.js",
-		"factories/**/*.js",
-		"!controllers/loading-screen.controller.js",
-		"controllers/**/*.js"
-	])
-		.pipe(concat('build.js'))
-		.pipe(gulp.dest('public/'));
+		.src('index.html')
+		.pipe(wiredep({
+			directory: 'bower_components' //inject dependencies
+		}))
+		.pipe(useref())
+		.pipe(gulpif('*.js', ngAnnotate()))
+		.pipe(gulpif('*.js', uglify()))
+		.pipe(gulpif('*.js', gulp.dest('public/')));
 });
-gulp.task('build-splash', function () {
-	'use strict';
-	return gulp
-		.src(["bower_components/please-wait/build/please-wait.min.js", "controllers/loading-screen.controller.js"])
-		.pipe(concat('splash.js'))
-		.pipe(gulp.dest('public/'));
-});
-gulp.task('build-vendor', function () {
-	'use strict';
-	return gulp
-		.src([
-		"bower_components/jquery/dist/jquery.min.js",
-		"bower_components/angular/angular.js",
-		"bower_components/angular-ui-router/release/angular-ui-router.js",
-		"bower_components/angular-aria/angular-aria.js",
-		"bower_components/angular-animate/angular-animate.js",
-		"bower_components/angular-material/angular-material.js",
-		"bower_components/bootstrap/dist/js/bootstrap.min.js",
-		"bower_components/bootstrap/js/collapse.js"
-	])
-		.pipe(concat('vendor.js'))
-		.pipe(gulp.dest('public/'));
-});
-
 gulp.task('build-css', function () {
-	'use strict';
 	return gulp
-		.src(["bower_components/please-wait/build/please-wait.css", "res/css/splash.css", "res/css/style.css", "bower_components/angular-material/angular-material.css"])
-		.pipe(concatCss("build.css"))
-		.pipe(cleanCss({compatibility: 'ie8'}))
-		.pipe(gulp.dest('public/'));
+		.src('index.html')
+		.pipe(useref()) //take a streem from index.html comment
+		.pipe(gulpif('*.css', minifyCss())) // if .css file, minify
+		.pipe(gulpif('*.css', gulp.dest('public/'))); // copy to dist
 });
-
 gulp.task('copy', function () {
 	'use strict';
 	var paths = [
@@ -87,18 +56,9 @@ gulp.task('copy', function () {
 	// NOTE Use templateCache to keepViews inline
 	return copy(paths);
 });
-
-gulp.task('html-replace', function () {
-	'use strict';
-	gulp
-		.src('index.html')
-		.pipe(htmlreplace({'css': 'build.css', 'splash': 'splash.js', 'js': 'build.js', 'vendor': 'vendor.js'}))
-		.pipe(gulp.dest('public/'));
-});
-
 gulp.task('image-min', function () {
 	'use strict';
-	gulp
+	return gulp
 		.src(['res/assets/**/*'])
 		.pipe(imagemin([
 			imagemin.gifsicle(),
@@ -116,10 +76,16 @@ gulp.task('clean', function () {
 		.src('public/', {read: false})
 		.pipe(clean({force: true}));
 });
-
+gulp.task('html-replace', function () {
+	'use strict';
+	gulp
+		.src('index.html')
+		.pipe(useref({noAssets: true}))
+		.pipe(gulp.dest('public'))
+});
 gulp.task('build', function () {
 	'use strict';
-	runSequence('clean', 'build-splash', 'build-vendor', 'build-js', 'build-css', 'copy', 'html-replace');
+	runSequence('clean', 'build-js', 'build-css', 'html-replace', 'copy');
 });
 
 gulp.task('server', function () {
@@ -132,6 +98,6 @@ gulp.task('server', function () {
 	});
 
 	gulp
-		.watch(["./**/*.js", "./**/*.html", "./res/css/**/*.css"])
+		.watch(["**/*.js", "**/*.html", "res/css/**/*.css"])
 		.on('change', browserSync.reload);
 });
