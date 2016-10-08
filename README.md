@@ -1,4 +1,6 @@
 # Beercalc App
+[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/WandersonAlves/beercalc-stack)
+
 Repositorio do BeerCalc!
 
 # BeerCalc Continuous Integration
