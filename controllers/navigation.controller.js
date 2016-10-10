@@ -13,6 +13,7 @@
 
 	NavigationController.$inject = [
 		'$scope',
+		'$log',
 		'$timeout',
 		'$mdSidenav',
 		'$state',
@@ -20,7 +21,7 @@
 		'ProfileService'
 	];
 
-	function NavigationController($scope, $timeout, $mdSidenav, $state, SideMenuFactory, ProfileService) {
+	function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, ProfileService) {
 		var vm = this;
 		// NOTE Public functions
 		vm.toggle = toggle;
@@ -37,7 +38,8 @@
 		 *
 		 */
 		function toggle() {
-			$mdSidenav('left').toggle();
+			$mdSidenav('left')
+				.toggle();
 		}
 		/**
 		 * @ngdoc function
