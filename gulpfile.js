@@ -11,7 +11,8 @@ var gulp = require('gulp'),
 	minifyCss = require('gulp-minify-css'),
 	useref = require('gulp-useref'),
 	htmlreplace = require('gulp-html-replace'),
-	ngAnnotate = require('gulp-ng-annotate');
+	ngAnnotate = require('gulp-ng-annotate'),
+	karma = require('karma').Server;
 
 // build js files uglifying and concating then
 gulp.task('build-js', function () {
@@ -88,16 +89,23 @@ gulp.task('build', function () {
 	runSequence('clean', 'build-js', 'build-css', 'html-replace', 'copy');
 });
 
+gulp.task('unit-test', function () {
+	new karma({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }).start();
+});
+
 gulp.task('server', function () {
 	'use strict';
 	browserSync.init({
 		server: {
 			baseDir: "./"
 		},
+		online: true,
 		port: 8080
 	});
 
-	gulp
-		.watch(["**/*.js", "**/*.html", "res/css/**/*.css"])
-		.on('change', browserSync.reload);
+	gulp.watch(["./(config|controllers|factories|services|views)/**/*.{js, html}", "res/css/**/*.css"]).on('change', browserSync.reload);
+	gulp.watch("**/*.js", ['unit-test']);
 });
