@@ -28,7 +28,12 @@
 			helpState = {
 				url: '/help',
 				templateUrl: '/views/help-view.html'
+			},
+			specialState = {
+				url: '/special',
+				templateUrl: '/views/special-view.html'
 			};
+
 		$urlRouterProvider.otherwise('/home');
 		$stateProvider.state('options', optionsState);
 		$stateProvider.state('profile', profileState);
@@ -36,5 +41,6 @@
 		$stateProvider.state('home', homeState);
 		$stateProvider.state('recomendations', recomendationsState);
 		$stateProvider.state('help', helpState);
+		$stateProvider.state('special', specialState);
 	}
 })();
