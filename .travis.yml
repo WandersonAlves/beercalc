@@ -5,17 +5,17 @@ node_js:
 - '6.1'
 branches:
   only:
-  - master
+  - feature/currentState
 notifications:
   slack: barcalc:wbq6Qm07jiEVVJ5ZOnhR6mqu
 addons:
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
-    code_climate:
-      repo_token: CODECLIMATE_REPO_TOKEN
+  #apt:
+  #  sources:
+  #  - google-chrome
+  #  packages:
+  #  - google-chrome-stable
+  code_climate:
+    repo_token: CODECLIMATE_REPO_TOKEN
 cache:
   directories:
   - node_modules
@@ -34,6 +34,6 @@ deploy:
   provider: heroku
   api_key:
     secure: BuXoL1V2I9M5wQgp3JMVS4qE5eBuFfD3SlttZQRlEI4p+ADvcuLxZe2omac2Jvoz9i+tZVmvXelcbES8MjmxZIDaNac8tjYPulyPgLTIalvXJONqD5VCKJXnIc2hwkBPhvp6lmkSGQkUMOfSxpioUMHrb7qybUpvi3QaewuCUFxSU10I/GtxHahAvmaI8T4WaKc0oZUBWgc0+iWADRv3pLxh1RrzA81XJWIduLTUX4oaPzbFC4lFxe5azbTDICdwzYFnRaOIWMyu2jb71hakhRtDKIfZnnpM6s0Gd96UdA3+N/DOv+y4vxuw+g+Ef1pff5eDO9WztdYKa4hA8x35bFoGTR70z2IePLhA5wrGnfZpW3mGm/sQZMXf0Udi5DyVQPlF8QozbThWK1udE9OEKJus50URzR8wUbndo4yuVPzQC1w/c8JTtG4m+tLY/Vjxdgn5vIPxtUZLnox8ZhlIi1mqy1tYiTmeuiZakJ9WeUAZ5mnkNxKWP7g7beennB4NOKJw3UNrpekInHQia1og+3V7wb0ihrTYCwugp181ky5HTtrsl4sHlBVk35daIUd13CdX+TLsNzaW67QapykhHEGc1rSP6osfXuKfcdKUMtpstKqlpU32TmVLh25/bbMV+RLBksv2JJXyUPGX1yhGQsdYi+T4z382nw8fm3w+0/w=
-  app: beercalc-app
+  app:  beercalc-development
   on:
     repo: WandersonAlves/beercalc
