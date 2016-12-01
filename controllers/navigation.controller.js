@@ -28,7 +28,7 @@
 		vm.goto = goto;
 		// NOTE Public attrs
 		// FIXME Set currentState value dynamically
-		vm.currentState = 'Home';
+		vm.currentState = null;
 
 		/**
 		 * @ngdoc function
