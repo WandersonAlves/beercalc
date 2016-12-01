@@ -31,8 +31,7 @@
                 };
             });
             spyOn($state, 'go');
-            spyOn(_NavStats_, 'setCurrentState');
-            spyOn(_ProfileService_, 'getLoggedUser').and.returnValue(deferred.promise);
+            spyOn(_NavStats_, 'observeCurrentState').and.returnValue(deferred.promise);
             navController = new $controller('NavigationController', {
                 $scope: scope,
                 $mdSidenav: mdSidenav,
@@ -43,40 +42,34 @@
         }));
 
         it("vm.currentState should be equal 'Home'", inject(function(_NavStats_) {
-            expect(navController.currentState).toBeDefined();
-            _NavStats_.setCurrentState('Home');
-            _NavStats_.observeCurrentState.notify();
+            deferred.notify('Home');
+            scope.$apply();
             expect(navController.currentState).toEqual('Home');
         }));
 
         it("vm.currentState should be equal 'Profile'", inject(function(_NavStats_) {
-            expect(navController.currentState).toBeDefined();
-            _NavStats_.setCurrentState('Profile');
+            deferred.notify('Profile');
+            scope.$apply();
             expect(navController.currentState).toEqual('Profile');
         }));
 
         it("vm.currentState should be equal 'Bills'", inject(function(_NavStats_) {
-            expect(navController.currentState).toBeDefined();
-            _NavStats_.setCurrentState('Bills');
+            deferred.notify('Bills');
+            scope.$apply();
             expect(navController.currentState).toEqual('Bills');
         }));
 
         it("vm.currentState should be equal 'Recomendations'", inject(function(_NavStats_) {
-            expect(navController.currentState).toBeDefined();
-            _NavStats_.setCurrentState('Recomendations');
+            deferred.notify('Recomendations');
+            scope.$apply();
             expect(navController.currentState).toEqual('Recomendations');
         }));
 
         it("vm.currentState should be equal 'Configuration'", inject(function(_NavStats_) {
-            expect(navController.currentState).toBeDefined();
-            _NavStats_.setCurrentState('Configuration');
+            deferred.notify('Configuration');
+            scope.$apply();
             expect(navController.currentState).toEqual('Configuration');
         }));
-
-        it("when click on menu, should toggle sidenav", function() {
-            navController.toggle();
-            expect(toggleMock).toHaveBeenCalled();
-        });
 
         it("goto fn should change $state to profile", inject(function($state) {
             navController.goto(navController.sideMenuOptions[1]);
@@ -97,6 +90,11 @@
             navController.goto('help');
             expect($state.go).toHaveBeenCalledWith('help');
         }));
+
+        it("when click on menu, should toggle sidenav", function() {
+            navController.toggle();
+            expect(toggleMock).toHaveBeenCalled();
+        });
     });
 
 })();
