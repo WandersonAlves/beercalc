@@ -8,6 +8,8 @@
 		var profileState = {
 				url: '/profile',
 				templateUrl: '/views/profile-view.html',
+				controller: "ProfileController",
+				controllerAs: "profileControll"
 			},
 			optionsState = {
 				url: '/options',
