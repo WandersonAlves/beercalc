@@ -10,8 +10,29 @@ branches:
 notifications:
   slack: barcalc:wbq6Qm07jiEVVJ5ZOnhR6mqu
 addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+    code_climate:
+      repo_token: CODECLIMATE_REPO_TOKEN
+cache:
+  directories:
+  - node_modules
+  - bower_components
+before_script:
+- npm install -g gulp
+- npm install -g bower
+- npm install -g codeclimate-test-reporter
+- bower install
+script:
+after_script:
+- codeclimate-test-reporter < reports/coverage/lcov.info
+before_deploy: 'echo "" > .gitignore'
 deploy:
   provider: heroku
+  skip_cleanup: true
   app:
     development: beercalc-development
     master: beercalc-app
