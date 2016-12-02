@@ -5,35 +5,17 @@ node_js:
 - '6.1'
 branches:
   only:
-  - feature/currentState
+  - development
+  - master
 notifications:
   slack: barcalc:wbq6Qm07jiEVVJ5ZOnhR6mqu
 addons:
-  #apt:
-  #  sources:
-  #  - google-chrome
-  #  packages:
-  #  - google-chrome-stable
-  #code_climate:
-  #  repo_token: CODECLIMATE_REPO_TOKEN
-cache:
-  directories:
-  - node_modules
-  - bower_components
-before_script:
-- npm install -g gulp
-- npm install -g bower
-- npm install -g codeclimate-test-reporter
-- bower install
-# script:
-#after_script:
-#- codeclimate-test-reporter < reports/coverage/lcov.info
-# before_deploy: 'echo "" > .gitignore'
-# deploy:
-#   skip_cleanup: true
-#   provider: heroku
-#   api_key:
-#     secure: BuXoL1V2I9M5wQgp3JMVS4qE5eBuFfD3SlttZQRlEI4p+ADvcuLxZe2omac2Jvoz9i+tZVmvXelcbES8MjmxZIDaNac8tjYPulyPgLTIalvXJONqD5VCKJXnIc2hwkBPhvp6lmkSGQkUMOfSxpioUMHrb7qybUpvi3QaewuCUFxSU10I/GtxHahAvmaI8T4WaKc0oZUBWgc0+iWADRv3pLxh1RrzA81XJWIduLTUX4oaPzbFC4lFxe5azbTDICdwzYFnRaOIWMyu2jb71hakhRtDKIfZnnpM6s0Gd96UdA3+N/DOv+y4vxuw+g+Ef1pff5eDO9WztdYKa4hA8x35bFoGTR70z2IePLhA5wrGnfZpW3mGm/sQZMXf0Udi5DyVQPlF8QozbThWK1udE9OEKJus50URzR8wUbndo4yuVPzQC1w/c8JTtG4m+tLY/Vjxdgn5vIPxtUZLnox8ZhlIi1mqy1tYiTmeuiZakJ9WeUAZ5mnkNxKWP7g7beennB4NOKJw3UNrpekInHQia1og+3V7wb0ihrTYCwugp181ky5HTtrsl4sHlBVk35daIUd13CdX+TLsNzaW67QapykhHEGc1rSP6osfXuKfcdKUMtpstKqlpU32TmVLh25/bbMV+RLBksv2JJXyUPGX1yhGQsdYi+T4z382nw8fm3w+0/w=
-#   app:  beercalc-development
-#   on:
-#     repo: WandersonAlves/beercalc
+deploy:
+  provider: heroku
+  app:
+    development: beercalc-development
+    master: beercalc-app
+  on:
+    repo: WandersonAlves/beercalc
+  api_key:
+    secure: kRtxVWT7tuINJxBU1pR03lfaYiJpjT70UdkvyBnP4HBvGIVALIY4s8x7V0Rek8b4/jC30OZX/R6NTptr9yHI8yTOYAUqoiS8yDe1v5wAxlzz43kmwPkdLCsVzospqZ7b3Xoa7azwExxsEcbSMU7hnHqnSq59iQa+dRdAnn2xro1UOkcx6/p/Ar3d1+3dkg83os1QgYNSxuTNC/FiovM32rbSwIvBZJRK0NJ/sFG0++KjbXdGDbNmIcTzCLh5P/ZzbQ7A+GgjXsSB3YIU5BXxaxK2IlOdN6U5xScxybOCoHu1RRvbDKb+k6WP1Cv+yq1P40e3CibOhcvq2Xkpp/7gYg3OP8H9Vm545NDI5bHHzvs4JhyvjTbxUOEwKyM3NZN2O8zvkjUlNM+CNmA5IpIHZ9Hnx3hc24aO1YSBWDZm3hS4SAwBTIZSgjlMegMPL5tshs4MsmD5zUwHyvaD6065reSti3jrAba214p7yKu7PN93rf6M/iKdMgF5fc+Trez6thKu2NAkNb2GoF2yQmJmqgmAq/E2RbHgrlBuRA1tcKlt1kR6jvRn+uBcPZLsfig+Gw08X3fU9U4Zzb3t2qZy4YopBQunCQq9pkg+BTg1+C4lBRjVY/oKbeCYXQTJ/s00JFtX7y3Fu96nIrHDLYgK6OilCC4+82G+tBKpFA6omyk=
