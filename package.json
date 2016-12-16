@@ -33,7 +33,10 @@
   },
   "scripts": {
     "test": "karma start --single-run --browsers PhantomJS",
+    "test-chrome": "karma start --single-run --browsers Chrome",
+    "test-debug": "karma start --browsers Chrome",
     "start": "node server.js",
+    "dev": "hs -c-1 ./",
     "postinstall": "bower install && gulp build"
   },
   "author": "Wanderson Alves",

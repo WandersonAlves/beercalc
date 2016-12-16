@@ -28,7 +28,7 @@
 		}));
 
 		it("should respond to URL profile", function () {
-			expect(state.href(PROFILE, {})).toEqual('#/profile');
+			expect(state.href(PROFILE, {})).toEqual('/profile');
 		});
 
 		it("should return name of route 'profile'", function () {
@@ -38,7 +38,7 @@
 		});
 
 		it("should respond to URL options", function () {
-			expect(state.href(OPTIONS, {})).toEqual('#/options');
+			expect(state.href(OPTIONS, {})).toEqual('/options');
 		});
 
 		it("should return name of route 'options'", function () {
@@ -48,7 +48,7 @@
 		});
 
 		it("should respond to URL bills", function () {
-			expect(state.href(BILLS, {})).toEqual('#/bills');
+			expect(state.href(BILLS, {})).toEqual('/bills');
 		});
 
 		it("should return name of route 'bills'", function () {
@@ -58,7 +58,7 @@
 		});
 
 		it("should respond to URL home", function () {
-			expect(state.href(HOME, {})).toEqual('#/home');
+			expect(state.href(HOME, {})).toEqual('/home');
 		});
 
 		it("should return name of route 'home'", function () {
@@ -68,7 +68,7 @@
 		});
 
 		it("should respond to URL help", function () {
-			expect(state.href(HELP, {})).toEqual('#/help');
+			expect(state.href(HELP, {})).toEqual('/help');
 		});
 
 		it("should return name of route 'help'", function () {
@@ -78,7 +78,7 @@
 		});
 
 		it("should respond to URL social", function () {
-			expect(state.href(SOCIAL, {})).toEqual('#/social');
+			expect(state.href(SOCIAL, {})).toEqual('/social');
 		});
 
 		it("should return name of route 'social'", function () {
@@ -88,7 +88,7 @@
 		});
 
 		it("should respond to URL special", function () {
-			expect(state.href(SPECIAL, {})).toEqual('#/special');
+			expect(state.href(SPECIAL, {})).toEqual('/special');
 		});
 
 		it("should return name of route 'special'", function () {

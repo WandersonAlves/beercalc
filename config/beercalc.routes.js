@@ -2,9 +2,9 @@
 	angular
 		.module('beercalc')
 		.config(config);
-	config.$inject = ['$stateProvider', '$urlRouterProvider'];
+	config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-	function config($stateProvider, $urlRouterProvider) {
+	function config($stateProvider, $urlRouterProvider, $locationProvider) {
 		var profileState = {
 				url: '/profile',
 				templateUrl: '/views/profile-view.html',
@@ -35,7 +35,7 @@
 				url: '/special',
 				templateUrl: '/views/special-view.html'
 			};
-
+		$locationProvider.html5Mode(true);
 		$urlRouterProvider.otherwise('/home');
 		$stateProvider.state('options', optionsState);
 		$stateProvider.state('profile', profileState);
