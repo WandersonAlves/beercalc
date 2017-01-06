@@ -13,27 +13,33 @@
 			},
 			optionsState = {
 				url: '/options',
-				templateUrl: '/views/options-view.html'
+				templateUrl: '/views/options-view.html',
+				controller: "OptionsController",
+				controllerAs: "optionsControll"
 			},
 			billsState = {
 				url: '/bills',
-				templateUrl: '/views/bills-view.html'
+				templateUrl: '/views/bills-view.html',
+				controller: "BillsController",
+				controllerAs: "billsControll"
 			},
 			homeState = {
 				url: '/home',
-				templateUrl: '/views/home-view.html'
+				templateUrl: '/views/home-view.html',
+				controller: "NavigationController",
+				controllerAs: "navController"
 			},
 			recomendationsState = {
 				url: '/social',
-				templateUrl: '/views/social-view.html'
+				templateUrl: '/views/social-view.html',
+				controller: "SocialController",
+				controllerAs: "socialControll"
 			},
 			helpState = {
 				url: '/help',
-				templateUrl: '/views/help-view.html'
-			},
-			specialState = {
-				url: '/special',
-				templateUrl: '/views/special-view.html'
+				templateUrl: '/views/help-view.html',
+				controller: "HelpController",
+				controllerAs: "helpControll"
 			};
 
 		$urlRouterProvider.otherwise('/home');
@@ -43,6 +49,5 @@
 		$stateProvider.state('home', homeState);
 		$stateProvider.state('recomendations', recomendationsState);
 		$stateProvider.state('help', helpState);
-		$stateProvider.state('special', specialState);
 	}
 })();

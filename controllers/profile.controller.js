@@ -30,7 +30,5 @@
                 vm.currentUser = undefined;
             });
         }();
-
-
     }
 })();
