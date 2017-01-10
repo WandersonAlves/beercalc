@@ -52,6 +52,15 @@ gulp.task('copy', function () {
 		}, {
 			src: 'views/**',
 			dest: 'public/views/'
+		}, {
+			src: 'manifest.json',
+			dest: 'public/manifest.json'
+		}, {
+			src: 'service-worker.js',
+			dest: 'public/service-worker.js'
+		}, {
+			src: 'mocks/**',
+			dest: 'public/mocks/'
 		}
 	];
 	// NOTE Use templateCache to keepViews inline
