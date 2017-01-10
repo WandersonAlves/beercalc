@@ -14,14 +14,14 @@
     HelpController.$inject = [
         '$scope',
         '$state',
-        'NavStats'
+        'CurrentStateObserver'
     ];
 
-    function HelpController($scope, $state, NavStats) {
+    function HelpController($scope, $state, CurrentStateObserver) {
         var vm = this;
 
         var init = function() {
-            NavStats.setCurrentState('Ajuda');
+            CurrentStateObserver.setCurrentState('Ajuda');
         }();
     }
 })();

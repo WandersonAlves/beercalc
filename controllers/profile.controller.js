@@ -15,17 +15,19 @@
         '$scope',
         '$state',
         'ProfileService',
-        'NavStats'
+        'CurrentStateObserver',
+        'CurrentUserObserver'
     ];
 
-    function ProfileController($scope, $state, ProfileService, NavStats) {
+    function ProfileController($scope, $state, ProfileService, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
 
         var init = function() {
-            NavStats.setCurrentState('Perfil');
+            CurrentStateObserver.setCurrentState('Perfil');
 
             ProfileService.getLoggedUser().then(function(success) {
                 vm.currentUser = success.data;
+                CurrentUserObserver.setSideProfileStats(vm.currentUser);
             }, function(error) {
                 vm.currentUser = undefined;
             });

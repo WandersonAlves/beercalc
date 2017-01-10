@@ -14,14 +14,14 @@
     SocialController.$inject = [
         '$scope',
         '$state',
-        'NavStats'
+        'CurrentStateObserver'
     ];
 
-    function SocialController($scope, $state, NavStats) {
+    function SocialController($scope, $state, CurrentStateObserver) {
         var vm = this;
 
         var init = function() {
-            NavStats.setCurrentState('Recomendações');
+            CurrentStateObserver.setCurrentState('Recomendações');
         }();
     }
 })();

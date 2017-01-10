@@ -14,14 +14,14 @@
     BillsController.$inject = [
         '$scope',
         '$state',
-        'NavStats'
+        'CurrentStateObserver'
     ];
 
-    function BillsController($scope, $state, NavStats) {
+    function BillsController($scope, $state, CurrentStateObserver) {
         var vm = this;
 
         var init = function() {
-            NavStats.setCurrentState('Contas');
+            CurrentStateObserver.setCurrentState('Contas');
         }();
     }
 })();

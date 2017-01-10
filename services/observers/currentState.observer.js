@@ -1,18 +1,18 @@
 (function() {
     /**
      * @ngdoc service
-     * @name beercalc.service:NavStats
+     * @name beercalc.service:CurrentStateObserver
      * @description
      * Service keep navigation stats
      *
      */
     angular
         .module('beercalc')
-        .service('NavStats', NavStats);
+        .service('CurrentStateObserver', CurrentStateObserver);
 
-    NavStats.$inject = ['$q'];
+    CurrentStateObserver.$inject = ['$q'];
 
-    function NavStats($q) {
+    function CurrentStateObserver($q) {
         var self = this,
             defer = $q.defer();
 

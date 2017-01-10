@@ -45,9 +45,9 @@
                     </div>
                 </md-list-item>
                 <md-list-item class="md-3-line" ng-click="null" ng-if="!navController.currentUser">
-                  <div class="md-list-item-text" layout="column">
-                    <h3>Erro ao obter dados do usuario :(</h3>
-                  </div>
+                    <div class="md-list-item-text" layout="column">
+                        <h3>Erro ao obter dados do usuario :(</h3>
+                    </div>
                 </md-list-item>
             </md-toolbar>
             <md-content layout-padding>
@@ -94,13 +94,24 @@
     <script src="config/beercalc.run.js"></script>
     <script src="factories/side-menu.factory.js"></script>
     <script src="services/profile.service.js"></script>
-    <script src="services/navigation-stats.service.js"></script>
+    <script src="services/observers/currentState.observer.js"></script>
+    <script src="services/observers/currentUser.observer.js"></script>
     <script src="controllers/navigation.controller.js"></script>
     <script src="controllers/profile.controller.js"></script>
     <script src="controllers/bills.controller.js"></script>
     <script src="controllers/help.controller.js"></script>
     <script src="controllers/social.controller.js"></script>
     <!-- endbuild -->
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                console.log('Service Worker registered');
+            }).catch(function(err) {
+                console.log('Service Worker registration failed: ', err);
+            });
+        }
+    </script>
 </body>
 
 </html>
