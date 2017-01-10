@@ -19,10 +19,11 @@
         '$state',
         'SideMenuFactory',
         'ProfileService',
-        'NavStats'
+        'CurrentStateObserver',
+        'CurrentUserObserver'
     ];
 
-    function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, ProfileService, NavStats) {
+    function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, ProfileService, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
         // NOTE Public functions
         vm.toggle = toggle;
@@ -59,8 +60,12 @@
             toggle();
         }
 
-        NavStats.observeCurrentState().then(null, null, function(currentState) {
+        CurrentStateObserver.observeCurrentState().then(null, null, function(currentState) {
             vm.currentState = currentState;
+        });
+
+        CurrentUserObserver.observeSideProfileStats().then(null, null, function(currentUser) {
+            vm.currentUser = currentUser;
         });
         /**
          * @ngdoc function
@@ -70,7 +75,7 @@
          *
          */
         var init = function() {
-						NavStats.setCurrentState('Home');
+						CurrentStateObserver.setCurrentState('Home');
             vm.sideMenuOptions = SideMenuFactory.constructSideMenu();
         }();
 

@@ -18,7 +18,7 @@
             }
         };
 
-        beforeEach(inject(function(_$q_, $templateCache, $controller, $rootScope, $state, _ProfileService_, _NavStats_) {
+        beforeEach(inject(function(_$q_, $templateCache, $controller, $rootScope, $state, _ProfileService_, _CurrentStateObserver_) {
             $templateCache.put('/views/profile-view.html', '');
             scope = $rootScope.$new();
             deferred = _$q_.defer();
@@ -30,7 +30,7 @@
                 $scope: scope,
                 $state: $state,
                 ProfileService: _ProfileService_,
-                NavStats: _NavStats_
+                CurrentStateObserver: _CurrentStateObserver_
             });
         }));
 

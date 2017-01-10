@@ -10,17 +10,8 @@
         var toggleMock = jasmine.createSpy();
         var $q;
         var deferred;
-        var loggedUserResolve = {
-            "data": {
-                "avatar": "res/photos/profile.jpg",
-                "name": "Wanderson Alves Ferreira",
-                "level": "20",
-                "title": "Brewmaster",
-                "currExp": 67
-            }
-        };
 
-        beforeEach(inject(function($templateCache, _$q_, $rootScope, $state, $controller, $mdSidenav, _SideMenuFactory_, _ProfileService_, _NavStats_) {
+        beforeEach(inject(function($templateCache, _$q_, $rootScope, $state, $controller, $mdSidenav, _SideMenuFactory_, _ProfileService_, _CurrentStateObserver_) {
             $templateCache.put('/views/home-view.html', '');
             scope = $rootScope.$new();
             $q = _$q_;
@@ -31,41 +22,41 @@
                 };
             });
             spyOn($state, 'go');
-            spyOn(_NavStats_, 'observeCurrentState').and.returnValue(deferred.promise);
+            spyOn(_CurrentStateObserver_, 'observeCurrentState').and.returnValue(deferred.promise);
             navController = new $controller('NavigationController', {
                 $scope: scope,
                 $mdSidenav: mdSidenav,
                 SideMenuFactory: _SideMenuFactory_,
                 ProfileService: _ProfileService_,
-                NavStats: _NavStats_
+                CurrentStateObserver: _CurrentStateObserver_
             });
         }));
 
-        it("vm.currentState should be equal 'Home'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Home'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Home');
             scope.$apply();
             expect(navController.currentState).toEqual('Home');
         }));
 
-        it("vm.currentState should be equal 'Profile'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Profile'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Profile');
             scope.$apply();
             expect(navController.currentState).toEqual('Profile');
         }));
 
-        it("vm.currentState should be equal 'Bills'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Bills'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Bills');
             scope.$apply();
             expect(navController.currentState).toEqual('Bills');
         }));
 
-        it("vm.currentState should be equal 'Recomendations'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Recomendations'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Recomendations');
             scope.$apply();
             expect(navController.currentState).toEqual('Recomendations');
         }));
 
-        it("vm.currentState should be equal 'Configuration'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Configuration'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Configuration');
             scope.$apply();
             expect(navController.currentState).toEqual('Configuration');

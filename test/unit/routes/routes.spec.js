@@ -11,7 +11,7 @@
 		var SOCIAL = 'recomendations';
 		var SPECIAL = 'special';
 		// NOTE This const is equal the number of routes that application have
-		var TOTAL_ROUTES = 7;
+		var TOTAL_ROUTES = 6;
 
 		beforeEach(module("beercalc"));
 
@@ -24,7 +24,6 @@
 			$templateCache.put('/views/help-view.html', '');
 			$templateCache.put('/views/home-view.html', '');
 			$templateCache.put('/views/social-view.html', '');
-			$templateCache.put('/views/special-view.html', '');
 		}));
 
 		it("should respond to URL profile", function () {
@@ -85,16 +84,6 @@
 			state.go(SOCIAL);
 			rootScope.$digest();
 			expect(state.current.name).toEqual(SOCIAL);
-		});
-
-		it("should respond to URL special", function () {
-			expect(state.href(SPECIAL, {})).toEqual('#/special');
-		});
-
-		it("should return name of route 'special'", function () {
-			state.go(SPECIAL);
-			rootScope.$digest();
-			expect(state.current.name).toEqual(SPECIAL);
 		});
 
 		it("should have all routes defined", function () {

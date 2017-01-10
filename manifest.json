@@ -1,0 +1,16 @@
+{
+  "name": "BeerCalc!",
+  "short_name": "BeerCalc!",
+  "display": "fullscreen",
+  "start_url": "/",
+  "theme_color": "#FF5722",
+  "background_color": "#FF5722",
+  "icons": [
+    {
+      "src": "res/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "prefer_related_applications": true
+}
