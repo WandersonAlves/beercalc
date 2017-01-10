@@ -12,5 +12,6 @@
       "type": "image/png"
     }
   ],
-  "prefer_related_applications": true
+  "prefer_related_applications": true,
+  "gcm_sender_id": "YOUR_GCM_ID"
 }
