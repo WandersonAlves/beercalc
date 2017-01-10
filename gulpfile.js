@@ -59,6 +59,9 @@ gulp.task('copy', function () {
 			src: 'service-worker.js',
 			dest: 'public/service-worker.js'
 		}, {
+			src: 'push-config.js',
+			dest: 'public/push-config.js'
+		}, {
 			src: 'mocks/**',
 			dest: 'public/mocks/'
 		}
