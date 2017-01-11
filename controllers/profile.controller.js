@@ -22,15 +22,12 @@
     function ProfileController($scope, $state, ProfileService, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
 
+        CurrentUserObserver.observeSideProfileStats().then(null, null, function(currentUser) {
+            vm.currentUser = currentUser;
+        });
+
         var init = function() {
             CurrentStateObserver.setCurrentState('Perfil');
-
-            ProfileService.getLoggedUser().then(function(success) {
-                vm.currentUser = success.data;
-                CurrentUserObserver.setSideProfileStats(vm.currentUser);
-            }, function(error) {
-                vm.currentUser = undefined;
-            });
         }();
     }
 })();

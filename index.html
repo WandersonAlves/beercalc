@@ -1,84 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-BR" ng-app="beercalc">
 
-    <head>
-        <meta charset="utf-8">
-        <title>BeerCalc!!!</title>
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="author" content="Wanderson Alves">
-        <!-- Chrome, Firefox OS, Opera and Vivaldi -->
-        <meta name="theme-color" content="#FF5722">
-        <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#FF5722">
-        <!-- iOS Safari -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="#FF5722">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <!-- build:css main.css -->
-        <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
-        <link rel="stylesheet" href="/res/css/splash.css">
-        <link rel="stylesheet" href="/res/css/style.css">
-        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
-        <!-- endbuild -->
-        <link rel="manifest" href="manifest.json"/>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>BeerCalc!!!</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Wanderson Alves">
+    <!-- Chrome, Firefox OS, Opera and Vivaldi -->
+    <meta name="theme-color" content="#FF5722">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#FF5722">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FF5722">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- build:css main.css -->
+    <link rel="stylesheet" href="/bower_components/please-wait/build/please-wait.css">
+    <link rel="stylesheet" href="/res/css/splash.css">
+    <link rel="stylesheet" href="/res/css/style.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <!-- endbuild -->
+    <link rel="manifest" href="manifest.json" />
+</head>
 
-    <body layout="column" ng-cloak ng-controller="NavigationController as navController">
-        <md-toolbar md-scroll-shrink md-whiteframe="8">
-            <div class="md-toolbar-tools">
-                <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
-                    <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
-                </md-button>
-                <h2>
+<body layout="column" ng-cloak ng-controller="NavigationController as navController">
+    <md-toolbar md-scroll-shrink md-whiteframe="8">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
+            </md-button>
+            <h2>
                     <span class="md-title">{{navController.currentState}}</span>
                 </h2>
-            </div>
-        </md-toolbar>
-        <div class="container" layout="row" flex>
-            <md-sidenav md-swipe-left="navController.toggle()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
-                <md-toolbar layout="column">
-                    <md-list-item class="md-3-line" ng-click="null" ng-if="navController.currentUser">
-                        <img class="md-avatar" ng-src="{{navController.currentUser.avatar}}"/>
-                        <div class="md-list-item-text" layout="column">
-                            <h3>{{navController.currentUser.name}}</h3>
-                            <h4>{{navController.currentUser.title}}</h4>
-                            <p>Nivel
-                                {{navController.currentUser.level}}</p>
-                        </div>
-                    </md-list-item>
-                    <md-list-item class="md-3-line" ng-click="null" ng-if="!navController.currentUser">
-                        <div class="md-list-item-text" layout="column">
-                            <h3>Erro ao obter dados do usuario :(</h3>
-                        </div>
-                    </md-list-item>
-                </md-toolbar>
-                <md-content layout-padding>
-                    <md-list>
-                        <div ng-repeat="($index, menu) in navController.sideMenuOptions">
-                            <md-list-item class="md-body-1" ng-click="navController.goto(menu)">
-                                <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
-                                <p>{{menu.label}}</p>
-                            </md-list-item>
-                        </div>
-                        <md-divider></md-divider>
-                        <md-list-item class="md-body-1" ng-click="navController.goto('options')">
-                            <p>Configurações</p>
+        </div>
+    </md-toolbar>
+    <div class="container" layout="row" flex>
+        <md-sidenav md-swipe-left="navController.toggle()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
+            <md-toolbar layout="column">
+                <md-list-item class="md-3-line" ng-click="null" ng-if="navController.currentUser">
+                    <img class="md-avatar" ng-src="{{navController.currentUser.avatar}}" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{navController.currentUser.name}}</h3>
+                        <h4>{{navController.currentUser.title}}</h4>
+                        <p>Nivel {{navController.currentUser.level}}
+                        </p>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-3-line" ng-click="navController.loginWithGoogle()" ng-if="!navController.currentUser">
+                    <div class="md-list-item-text" layout="column">
+                        <h3>Login</h3>
+                    </div>
+                </md-list-item>
+            </md-toolbar>
+            <md-content layout-padding>
+                <md-list>
+                    <div ng-repeat="($index, menu) in navController.sideMenuOptions">
+                        <md-list-item class="md-body-1" ng-click="navController.goto(menu)">
+                            <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
+                            <p>{{menu.label}}</p>
                         </md-list-item>
-                        <md-list-item class="md-body-1" ng-click="navController.goto('help')">
-                            <p>Ajuda</p>
-                        </md-list-item>
-                    </md-list>
-                </md-content>
-            </md-sidenav>
-            <md-content flex layout-padding md-swipe-right="navController.toggle()">
-                <div layout="column">
-                    <main ui-view></main>
-                </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-body-1" ng-click="navController.goto('options')">
+                        <p>Configurações</p>
+                    </md-list-item>
+                    <md-list-item class="md-body-1" ng-click="navController.goto('help')">
+                        <p>Ajuda</p>
+                    </md-list-item>
+                </md-list>
             </md-content>
         </md-sidenav>
+        <md-content flex layout-padding md-swipe-right="navController.toggle()">
+            <div layout="column">
+                <main ui-view></main>
+            </div>
+        </md-content>
+        </md-sidenav>
     </div>
-    
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD9bMSLY2Qntf9M2n_PXCXqabJ3-V9jEWc",
+            authDomain: "beercalc-401e8.firebaseapp.com",
+            databaseURL: "https://beercalc-401e8.firebaseio.com",
+            storageBucket: "beercalc-401e8.appspot.com",
+            messagingSenderId: "331430884413"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <!-- build:js main.js -->
     <script src="bower_components/please-wait/build/please-wait.min.js"></script>
     <script src="controllers/loading-screen.controller.js"></script>
@@ -97,6 +111,8 @@
     <script src="config/beercalc.routes.js"></script>
     <script src="config/beercalc.run.js"></script>
     <script src="factories/side-menu.factory.js"></script>
+    <script src="factories/profile.factory.js"></script>
+    <script src="factories/wrappers/firebase.wrapper.js"></script>
     <script src="services/profile.service.js"></script>
     <script src="services/observers/currentState.observer.js"></script>
     <script src="services/observers/currentUser.observer.js"></script>
