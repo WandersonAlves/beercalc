@@ -18,34 +18,31 @@
             }
         };
 
-        beforeEach(inject(function(_$q_, $templateCache, $controller, $rootScope, $state, _ProfileService_, _CurrentStateObserver_) {
+        beforeEach(inject(function(_$q_, $templateCache, $controller, $rootScope, $state, _CurrentStateObserver_, _CurrentUserObserver_) {
             $templateCache.put('/views/profile-view.html', '');
             scope = $rootScope.$new();
             deferred = _$q_.defer();
-            spyOn(_ProfileService_, 'getLoggedUser').and.returnValue(deferred.promise);
+            spyOn(_CurrentStateObserver_, 'setCurrentState');
 
             $state.go('profile');
 
             profileController = new $controller('ProfileController', {
                 $scope: scope,
                 $state: $state,
-                ProfileService: _ProfileService_,
-                CurrentStateObserver: _CurrentStateObserver_
+                CurrentStateObserver: _CurrentStateObserver_,
+                CurrentUserObserver: _CurrentUserObserver_
             });
         }));
 
-        it("should resolve promise in init ProfileService.getLoggedUser fn", inject(function() {
-            deferred.resolve(loggedUserResolve);
-            scope.$apply();
-            expect(profileController.currentUser).not.toBe(undefined);
+        it("should call setCurrentState with 'Perfil'", inject(function(_CurrentStateObserver_) {
+            expect(_CurrentStateObserver_.setCurrentState).toHaveBeenCalledWith('Perfil');
         }));
 
-        it("should reject promise in init ProfileService.getLoggedUser fn", inject(function() {
-            deferred.reject();
+        it("should notify with 'Profile' in init()", inject(function(_CurrentUserObserver_) {
+            deferred.notify(loggedUserResolve);
             scope.$apply();
-            expect(profileController.currentUser).toBe(undefined);
+            expect(profileController.currentUser).toEqual(loggedUserResolve);
         }));
-
 
     });
 
