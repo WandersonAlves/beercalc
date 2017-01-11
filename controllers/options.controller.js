@@ -14,11 +14,23 @@
     OptionsController.$inject = [
         '$scope',
         '$state',
-        'CurrentStateObserver'
+        'CurrentStateObserver',
+        'CurrentUserObserver',
+        'Firebase'
     ];
 
-    function OptionsController($scope, $state, CurrentStateObserver) {
+    function OptionsController($scope, $state, CurrentStateObserver, CurrentUserObserver, Firebase) {
         var vm = this;
+        vm.logoutUser = logoutUser;
+
+        function logoutUser() {
+            Firebase.getFirebase().auth().signOut().then(function() {
+                // Sign-out successful.
+                CurrentUserObserver.setSideProfileStats(null);
+            }, function(error) {
+                // An error happened.
+            });
+        }
 
         var init = function() {
             CurrentStateObserver.setCurrentState('Configurações');
