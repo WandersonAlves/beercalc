@@ -78,9 +78,11 @@
         </md-content>
         </md-sidenav>
     </div>
-
-    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-    <script src="https://apis.google.com/js/platform.js"></script>
+    <!-- <script src="https://apis.google.com/js/platform.js"></script> -->   
+    <!-- build:js main.js -->
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/please-wait/build/please-wait.min.js"></script>
+    <script src="controllers/loading-screen.controller.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -92,10 +94,6 @@
         };
         firebase.initializeApp(config);
     </script>
-
-    <!-- build:js main.js -->
-    <script src="bower_components/please-wait/build/please-wait.min.js"></script>
-    <script src="controllers/loading-screen.controller.js"></script>
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -113,7 +111,6 @@
     <script src="factories/side-menu.factory.js"></script>
     <script src="factories/profile.factory.js"></script>
     <script src="factories/wrappers/firebase.wrapper.js"></script>
-    <script src="services/profile.service.js"></script>
     <script src="services/observers/currentState.observer.js"></script>
     <script src="services/observers/currentUser.observer.js"></script>
     <script src="controllers/navigation.controller.js"></script>

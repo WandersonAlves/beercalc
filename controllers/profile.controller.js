@@ -14,12 +14,11 @@
     ProfileController.$inject = [
         '$scope',
         '$state',
-        'ProfileService',
         'CurrentStateObserver',
         'CurrentUserObserver'
     ];
 
-    function ProfileController($scope, $state, ProfileService, CurrentStateObserver, CurrentUserObserver) {
+    function ProfileController($scope, $state, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
 
         CurrentUserObserver.observeSideProfileStats().then(null, null, function(currentUser) {

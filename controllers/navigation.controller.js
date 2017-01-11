@@ -18,14 +18,13 @@
         '$mdSidenav',
         '$state',
         'SideMenuFactory',
-        'ProfileService',
         'CurrentStateObserver',
         'CurrentUserObserver',
         'Firebase',
         'ProfileFactory'
     ];
 
-    function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, ProfileService, CurrentStateObserver, CurrentUserObserver, Firebase,
+    function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, CurrentStateObserver, CurrentUserObserver, Firebase,
         ProfileFactory) {
         var vm = this;
         // NOTE Public functions

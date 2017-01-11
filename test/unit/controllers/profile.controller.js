@@ -23,7 +23,8 @@
             scope = $rootScope.$new();
             deferred = _$q_.defer();
             spyOn(_CurrentStateObserver_, 'setCurrentState');
-
+            spyOn(_CurrentUserObserver_, 'observeSideProfileStats').and.returnValue(deferred.promise);
+            
             $state.go('profile');
 
             profileController = new $controller('ProfileController', {
