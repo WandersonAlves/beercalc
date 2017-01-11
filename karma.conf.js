@@ -28,7 +28,7 @@ module.exports = function (config) {
 			'test/**/*.js'
 		],
 		// list of files to exclude
-		exclude: ['controllers/loading-screen.controller.js', 'services/observers/**/*.js'],
+		exclude: ['controllers/loading-screen.controller.js'],
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
