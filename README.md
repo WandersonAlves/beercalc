@@ -3,6 +3,8 @@
 
 Repositorio do BeerCalc!
 
+Esse app encontra-se em modo PoC.
+
 # BeerCalc Continuous Integration
 [![Build Status](https://travis-ci.org/WandersonAlves/beercalc.svg?branch=master)](https://travis-ci.org/WandersonAlves/beercalc)
 
