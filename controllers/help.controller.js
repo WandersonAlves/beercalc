@@ -14,14 +14,18 @@
     HelpController.$inject = [
         '$scope',
         '$state',
-        'CurrentStateObserver'
+        'CurrentStateObserver',
+        'MockService'
     ];
 
-    function HelpController($scope, $state, CurrentStateObserver) {
+    function HelpController($scope, $state, CurrentStateObserver, MockService) {
         var vm = this;
 
         var init = function() {
             CurrentStateObserver.setCurrentState('Ajuda');
+            MockService.sampleService().then(function(result) {
+                console.log(result);
+            })
         }();
     }
 })();
