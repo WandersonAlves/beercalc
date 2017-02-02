@@ -1,0 +1,19 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "browser"
+  ],
+  "plugins": {
+    "node": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
+    "modules": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
+    "angular": {}
+  }
+}

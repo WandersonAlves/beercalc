@@ -21,6 +21,8 @@
     function ProfileController($scope, $state, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
 
+        vm.currentUser = CurrentUserObserver.getSideProfileStats();
+
         CurrentUserObserver.observeSideProfileStats().then(null, null, function(currentUser) {
             vm.currentUser = currentUser;
         });

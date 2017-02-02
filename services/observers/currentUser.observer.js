@@ -24,5 +24,9 @@
             self.sideProfileStats = sideProfileStats;
             defer.notify(self.sideProfileStats);
         }
+
+        this.getSideProfileStats = function() {
+            return self.sideProfileStats;
+        }
     }
 })();
