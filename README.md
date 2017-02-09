@@ -14,4 +14,4 @@ Esse app encontra-se em modo PoC.
 [![Test Coverage](https://codeclimate.com/github/WandersonAlves/beercalc/badges/coverage.svg)](https://codeclimate.com/github/WandersonAlves/beercalc/coverage)
 
 # Dependencies
-[![bitHound Overall Score](https://www.bithound.io/github/WandersonAlves/beercalc/badges/score.svg)](https://www.bithound.io/github/WandersonAlves/beercalc) [![bitHound Dependencies](https://www.bithound.io/github/WandersonAlves/beercalc/badges/dependencies.svg)](https://www.bithound.io/github/WandersonAlves/beercalc/master/dependencies/npm) [![bitHound Dev Dependencies](https://www.bithound.io/github/WandersonAlves/beercalc/badges/devDependencies.svg)](https://www.bithound.io/github/WandersonAlves/beercalc/master/dependencies/npm) [![bitHound Code](https://www.bithound.io/github/WandersonAlves/beercalc/badges/code.svg)](https://www.bithound.io/github/WandersonAlves/beercalc)
+![David](https://david-dm.org/WandersonAlves/beercalc.svg)
