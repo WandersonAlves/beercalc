@@ -14,4 +14,4 @@ Esse app encontra-se em modo PoC.
 [![Test Coverage](https://codeclimate.com/github/WandersonAlves/beercalc/badges/coverage.svg)](https://codeclimate.com/github/WandersonAlves/beercalc/coverage)
 
 # Dependencies
-![David](https://david-dm.org/WandersonAlves/beercalc.svg)
+[![David](https://david-dm.org/WandersonAlves/beercalc.svg)](https://david-dm.org/WandersonAlves/beercalc)
