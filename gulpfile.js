@@ -18,52 +18,43 @@ var gulp = require('gulp'),
 gulp.task('build-js', function () {
 	'use strict';
 	return gulp
-		.src('index.html')
+		.src('./app/index.html')
 		.pipe(wiredep({
-			directory: 'bower_components' //inject dependencies
+			directory: './app/bower_components' //inject dependencies
 		}))
 		.pipe(useref())
 		.pipe(gulpif('*.js', ngAnnotate()))
 		.pipe(gulpif('*.js', uglify()))
-		.pipe(gulpif('*.js', gulp.dest('public/')));
+		.pipe(gulpif('*.js', gulp.dest('./public')));
 });
 gulp.task('build-css', function () {
 	return gulp
-		.src('index.html')
+		.src('./app/index.html')
 		.pipe(useref()) //take a streem from index.html comment
 		.pipe(gulpif('*.css', minifyCss())) // if .css file, minify
-		.pipe(gulpif('*.css', gulp.dest('public/'))); // copy to dist
+		.pipe(gulpif('*.css', gulp.dest('./public'))); // copy to dist
 });
 gulp.task('copy', function () {
 	'use strict';
 	var paths = [
 		{
-			src: 'res/logo.png',
-			dest: 'public/res/logo.png'
+			src: './app/res/**/',
+			dest: './public/res/'
 		}, {
-			src: 'res/uc.png',
-			dest: 'public/res/uc.png'
+			src: './app/views/**/',
+			dest: './public/views/'
 		}, {
-			src: 'res/svg/**',
-			dest: 'public/res/svg/'
+			src: './app/manifest.json',
+			dest: './public/manifest.json'
 		}, {
-			src: 'res/photos/**',
-			dest: 'public/res/photos/'
+			src: './app/service-worker.js',
+			dest: './public/service-worker.js'
 		}, {
-			src: 'views/**',
-			dest: 'public/views/'
+			src: './app/push-config.js',
+			dest: './public/push-config.js'
 		}, {
-			src: 'manifest.json',
-			dest: 'public/manifest.json'
-		}, {
-			src: 'service-worker.js',
-			dest: 'public/service-worker.js'
-		}, {
-			src: 'push-config.js',
-			dest: 'public/push-config.js'
-		}, {
-			src: 'mocks/**',
-			dest: 'public/mocks/'
+			src: './app/mocks/**/',
+			dest: './public/mocks/'
 		}
 	];
 	// NOTE Use templateCache to keepViews inline
@@ -72,7 +63,7 @@ gulp.task('copy', function () {
 gulp.task('image-min', function () {
 	'use strict';
 	return gulp
-		.src(['res/assets/**/*'])
+		.src(['app/res/assets/**/*'])
 		.pipe(imagemin([
 			imagemin.gifsicle(),
 			imagemin.jpegtran(),
@@ -80,7 +71,7 @@ gulp.task('image-min', function () {
 			imagemin.svgo(),
 			imageminJpegRecompress({method: 'smallfry'})
 		], {verbose: true}))
-		.pipe(gulp.dest('public/res/assets'));
+		.pipe(gulp.dest('./public/res/assets'));
 });
 
 gulp.task('clean', function () {
@@ -92,7 +83,7 @@ gulp.task('clean', function () {
 gulp.task('html-replace', function () {
 	'use strict';
 	gulp
-		.src('index.html')
+		.src('app/index.html')
 		.pipe(useref({noAssets: true}))
 		.pipe(gulp.dest('public'))
 });
@@ -112,7 +103,7 @@ gulp.task('server', function () {
 	'use strict';
 	browserSync.init({
 		server: {
-			baseDir: "./"
+			baseDir: "app"
 		},
 		online: true,
 		port: 8080
