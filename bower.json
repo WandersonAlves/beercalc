@@ -15,12 +15,10 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "angular": "^1.5.8",
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.1.0"
-  },
   "dependencies": {
+    "jquery": "^3.1.0",
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",    
     "angular-material": "^1.1.0",
     "angular-ui-router": "^0.3.1",
     "please-wait": "^0.0.5",
