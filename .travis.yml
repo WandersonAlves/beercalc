@@ -8,7 +8,7 @@ branches:
   - development
   - master
 notifications:
-  slack: barcalc:wbq6Qm07jiEVVJ5ZOnhR6mqu
+  slack: $SLACK_KEY
 addons:
   apt:
     sources:
@@ -22,11 +22,10 @@ cache:
   - node_modules
   - bower_components
 before_script:
-- npm install -g gulp
 - npm install -g bower
 - npm install -g codeclimate-test-reporter
 - bower install
-script: 
+script:
 after_script:
 - codeclimate-test-reporter < reports/coverage/lcov.info
 before_deploy: echo "" > .gitignore
@@ -39,4 +38,4 @@ deploy:
   on:
     repo: WandersonAlves/beercalc
   api_key:
-    secure: QwkevyF73ovVMR2kZpSKmESirsfa1EKj+FLNm71J/z5RzrhRaRcZjUbOc/Pgk0B+Cl0a9fk45LYV3U6KyLMDB/3dvLgamEmItrPOuk1ok3rH2dvAYrYj/gLX++kWPZ7RFuxvvnul8/09dS92keZ2yDRqZrLCK+wgPwDMVrMNU20YulvoXSb1tWjbi3tMKHh76FX3UZAU+CywmW/qxxcK+d3mkHeWYVQsu79fW5v9Th2/337h0S5wZfROfOOlZliP10/Lq2rCyTRhUpbJnEMO9D16sIEeVC17dWwzSQB23lYSMaeAzFDSYRKR+Uk0l5+aKPZUwd594Aj6d7hSkAVBbBrgzcXfqnOZRi9+0gUhihc8o/GQ+b7hA4cEdt7H+foJPkc6cV87t2/FhfyhA2YCIvmlM9sgb+5s1CDTUwwNQ3TSuZIbeGSlpTXaFQa33+IIkMREvXal/vFLL5EWXY667P4OJNvLGl46HRZknf3duACyw6E9w1S6F1Ghy/hTXt0v+8oayb7gqgFLscsBGFZnWESqMeID2uJeUTK/vtjafMLRYSfrtESOpmNj5c96tv+T+mywb+G+16uanlk4BtQ3aRDLGNHpG4tAdj+xLQtdT9pd2yMZrAMi6pG+RnHHjGhnh83g8UkRIvK+ny5ys/eRGjXqTbNbYBPT6bW51t8QuP4=
+    secure: $HEROKU_KEY
