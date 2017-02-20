@@ -38,7 +38,7 @@
     <div class="container" layout="row" flex>
         <md-sidenav md-swipe-left="navController.toggle()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
             <md-toolbar layout="column">
-                <md-list-item class="md-3-line" ng-click="null" ng-if="navController.currentUser">
+                <md-list-item class="fade-element-in md-3-line" ng-click="null" ng-if="navController.currentUser">
                     <img class="md-avatar" ng-src="{{navController.currentUser.avatar}}" />
                     <div class="md-list-item-text" layout="column">
                         <h3>{{navController.currentUser.name}}</h3>
@@ -47,7 +47,7 @@
                         </p>
                     </div>
                 </md-list-item>
-                <md-list-item class="md-3-line" ng-click="navController.loginWithGoogle()" ng-if="!navController.currentUser">
+                <md-list-item class="fade-element-in md-3-line" ng-click="navController.loginWithGoogle()" ng-if="!navController.currentUser">
                     <div class="md-list-item-text" layout="column">
                         <h3>Login</h3>
                     </div>

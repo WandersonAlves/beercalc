@@ -22,9 +22,7 @@ cache:
   - node_modules
   - bower_components
 before_script:
-- npm install -g bower
 - npm install -g codeclimate-test-reporter
-- bower install
 script:
 after_script:
 - codeclimate-test-reporter < reports/coverage/lcov.info
@@ -38,4 +36,4 @@ deploy:
   on:
     repo: WandersonAlves/beercalc
   api_key:
-    secure: $HEROKU_KEY
+    secure: aKRdMeKIvTJ/JkMC/3vI2D3cDb4vjoUQKAoAg7ulAkG04qSi+GcEO0E89N3FDyJIGAA2GwQttnweyaqkH0sG+gqpefomrYZ833diSo7SUoId3UBp84f8XBu5spHzTfshb/coB5Ul/4O7JkM9vec37AP/9NIvcGy8WTJEF58ebI+uMz0I1xPcKBOivh4uLATQvUUxDpx/Qx6izp6Gv5uQjoH0MuSYNk42jZY9ngB0w36rFoLeKPHKbcqGBMwlg+x9vdSJZYA1hlg1y7wem/0gnsIXyJyYg+3/FrGqm9gMNthcrff91/+fnYe7+qvVGQDdZ/cVPJR6FeKCMFvvikbKXqyFmMI2dSBVy4T6KFVhWJHJnEYRN/uADUx3D9cShFMfe8xvIFRaTizPT4XJw5D1PrE44U+GEd4P18yOk2A1RyUzSKh2IQ1i9n/MbgHwLIen5FEGJAo2BUvG0lW+NuiKMzpmq3NsXFdiQmpMST+IR9kipy90CDrDOKz5sWXUm1YLHS35piE+/RFR61tH3qseyG7bpv+sivLRWxYat7IPiApa+ObRQiwn7cHDl/0CEn6N6cmZjdPSqsJIL1uFlIjSqK7WbIYyHS5HSD+R1BajG4jVxx9033ccr88HL9a3UxGPpwmXtYeUaUBQHF7YwA/88wvAf7t7BtYzKypP76kQ4/4=
