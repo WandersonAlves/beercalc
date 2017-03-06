@@ -30,14 +30,12 @@
             <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
                 <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
             </md-button>
-            <h2>
-                    <span class="md-title">{{navController.currentState}}</span>
-                </h2>
+            <h2><span class="md-title">{{navController.currentState}}</span></h2>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
-        <md-sidenav md-swipe-left="navController.toggle()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
-            <md-toolbar layout="column">
+        <md-sidenav layout="column" layout-fill md-swipe-left="navController.toggle()" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-whiteframe="4">
+            <md-toolbar>
                 <md-list-item class="fade-element-in md-3-line" ng-click="null" ng-if="navController.currentUser">
                     <img class="md-avatar" ng-src="{{navController.currentUser.avatar}}" />
                     <div class="md-list-item-text" layout="column">
@@ -53,30 +51,29 @@
                     </div>
                 </md-list-item>
             </md-toolbar>
-            <md-content layout-padding>
-                <md-list>
-                    <div ng-repeat="($index, menu) in navController.sideMenuOptions">
-                        <md-list-item class="md-body-1" ng-click="navController.goto(menu)">
-                            <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
-                            <p>{{menu.label}}</p>
-                        </md-list-item>
-                    </div>
-                    <md-divider></md-divider>
+            <md-list layout-fill layout-align="end none">
+                <div ng-repeat="($index, menu) in navController.sideMenuOptions">
+                    <md-list-item class="md-body-1" ng-click="navController.goto(menu)">
+                        <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
+                        <p>{{menu.label}}</p>
+                    </md-list-item>
+                </div>
+                <md-divider></md-divider>
+                <md-content layout-fill layout-align="end none">
                     <md-list-item class="md-body-1" ng-click="navController.goto('options')">
                         <p>Configurações</p>
                     </md-list-item>
                     <md-list-item class="md-body-1" ng-click="navController.goto('help')">
                         <p>Ajuda</p>
                     </md-list-item>
-                </md-list>
-            </md-content>
+                </md-content>
+            </md-list>
         </md-sidenav>
         <md-content flex layout-padding md-swipe-right="navController.toggle()">
             <div layout="column">
                 <main ui-view></main>
             </div>
         </md-content>
-        </md-sidenav>
     </div>
     <!-- <script src="https://apis.google.com/js/platform.js"></script> -->
     <!-- build:js main.js -->

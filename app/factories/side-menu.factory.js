@@ -23,6 +23,11 @@
 					label: 'Contas'
   			},
 				{
+					sref: 'menu',
+					icon: 'res/svg/ic_add_white_24px.svg',
+					label: 'Cardapios'
+				},
+				{
 					sref: 'recomendations',
 					icon: 'res/svg/ic_more_white_24px.svg',
 					label: 'Recomendações'
