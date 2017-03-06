@@ -7,8 +7,6 @@ branches:
   only:
   - development
   - master
-notifications:
-  slack: "$SLACK_KEY"
 addons:
   apt:
     sources:
@@ -23,17 +21,16 @@ cache:
   - bower_components
 before_script:
 - npm install -g codeclimate-test-reporter
-script: 
+script:
 after_script:
 - codeclimate-test-reporter < reports/coverage/lcov.info
 before_deploy: echo "" > .gitignore
 deploy:
   provider: heroku
-  skip_cleanup: true
+  api_key:
+    secure: HaMKijWxMXDa/gRI7MiffefIgx79eA/6DcUwMB2sRJKRqhBTHghM75eVov8bEIdFa32SHCdwL3Cf+VMyImsbYEKB+ahewqwFrpmqQkGoEDC6/pfRdWZYoSankigcrr656zecK3uEV2KkU8kVAGd+r2/Krr7ijmbFSzvohGIMAL0enwmVWWdFmzaZTHUJAC6nO7M4fghk7XlFZEMWP5nOJ4heEfjFzpOowVpP4ZmCS2v2G49FBu+3Bnto3wsIGbIJPgj5V+806RVOX5LGmEuQaJGS5tB6+9/TiondsMKOmpO2/Ed5l6cW36pQcAM7cMBwKR3O5aXfasbjaFyF6R3XLX4MeniugngIs0FrImKwmHRBRCNN6QuyKRLeHzfmKo8N3Mm62+nNdp/aX6+n2pC4S0ayq4X/ftMUKhARRCTRi6PPSkOT/+MX3x9xHL0Lvtrnstma0PZ+C3Y9zkI/75ufXSurloMEkPAeeI3Ys4uaAQm/YT6yywnKvqFke5LbTcMop9gKR2MqhHTAZglsvsPBP2kOOl8UTnxFDCFORzXm4tR4alCFSVfHwYQ/MfnLzO7RfpimCBxd+n/eTTmtEGjl5ZydBvm/JpcU36qG323SBvVAT5aERmDDWkEHtyGcMMGX955W7JJLLjO5e2Tbcx2+e+C4f5GAHENMlcvzHd/67jo=
   app:
     development: beercalc-development
     master: beercalc-app
   on:
     repo: WandersonAlves/beercalc
-  api_key:
-    secure: Ft/wvjpskIRaDSnwc1JE5wwxVv4D2lV9E/x5ObK8Hy9uhYWpRi2VCZRmnbedzV5VnHnKjndd+8KqP1ZEQwFV6k5JQsnnO7odcFMmWploDmvYZXqZ6ka3LY+RxM34FXjQjSOLcSfh3R4qCUMBeuvlWjsTYRsF8dyV0Qgxi2pw/IgHt15RpWBlPhsdDsQ24xoE9uj+SfjHNNf2BXBhj8k3xTSTcQ8nswln1EZ473s2cbPKUpx+6QGHvFpGhNXrV7lcfQaGw8JwJm8GqBndOKo0GEB+B0cTCSV0CtgCBg/iIz9WGGn4iXC25Ai5lxwLJ/1yWxT98okOktK+afCqOcg4XJeUpbfh3UvMTYHUkt+SOQW9jc72QT8t9/OeD7Z13igMkOJ3je2yAu0kEy5iJH9L1/3TlAHL6t4yR2OdWMsxzvNVTE6MgAXCwBKZZNWBvTew884/NtKJDepOvPrL+96o5Cor4VoLM29bHiWefi9AKyt7QUbXihCBJBfsbypcIdJhACgQrnx24CPR/6WMwbj7H/FiVcKO8JIBwZMwahWnIQW6Ys9v3wUeZL8z4NRzOPKghe8NIxZvms6iqGPMZtm5gtTL8AfWWfUJBQjKfPv0RnakeT0m65RNWjkQHYIbXrFUzOB1kpeZou9mcaLt2mvoA6QmH2B5b0Ultm7DzvFCNm4=
