@@ -11,14 +11,6 @@
         .module('beercalc')
         .controller('OptionsController', OptionsController);
 
-    OptionsController.$inject = [
-        '$scope',
-        '$state',
-        'CurrentStateObserver',
-        'CurrentUserObserver',
-        'Firebase'
-    ];
-
     function OptionsController($scope, $state, CurrentStateObserver, CurrentUserObserver, Firebase) {
         var vm = this;
         vm.logoutUser = logoutUser;

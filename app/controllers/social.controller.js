@@ -10,13 +10,7 @@
     angular
         .module('beercalc')
         .controller('SocialController', SocialController);
-
-    SocialController.$inject = [
-        '$scope',
-        '$state',
-        'CurrentStateObserver'
-    ];
-
+        
     function SocialController($scope, $state, CurrentStateObserver) {
         var vm = this;
 

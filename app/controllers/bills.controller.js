@@ -11,12 +11,6 @@
         .module('beercalc')
         .controller('BillsController', BillsController);
 
-    BillsController.$inject = [
-        '$scope',
-        '$state',
-        'CurrentStateObserver'
-    ];
-
     function BillsController($scope, $state, CurrentStateObserver) {
         var vm = this;
 

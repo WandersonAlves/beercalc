@@ -11,19 +11,6 @@
         .module('beercalc')
         .controller('NavigationController', NavigationController);
 
-    NavigationController.$inject = [
-        '$scope',
-        '$log',
-        '$timeout',
-        '$mdSidenav',
-        '$state',
-        'SideMenuFactory',
-        'CurrentStateObserver',
-        'CurrentUserObserver',
-        'Firebase',
-        'ProfileFactory'
-    ];
-
     function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, CurrentStateObserver, CurrentUserObserver, Firebase,
         ProfileFactory) {
         var vm = this;

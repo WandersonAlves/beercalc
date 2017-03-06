@@ -10,14 +10,7 @@
     angular
         .module('beercalc')
         .controller('ProfileController', ProfileController);
-
-    ProfileController.$inject = [
-        '$scope',
-        '$state',
-        'CurrentStateObserver',
-        'CurrentUserObserver'
-    ];
-
+        
     function ProfileController($scope, $state, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
 
