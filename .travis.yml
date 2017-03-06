@@ -27,6 +27,7 @@ after_script:
 before_deploy: echo "" > .gitignore
 deploy:
   provider: heroku
+  skip_cleanup: true
   api_key:
     secure: HaMKijWxMXDa/gRI7MiffefIgx79eA/6DcUwMB2sRJKRqhBTHghM75eVov8bEIdFa32SHCdwL3Cf+VMyImsbYEKB+ahewqwFrpmqQkGoEDC6/pfRdWZYoSankigcrr656zecK3uEV2KkU8kVAGd+r2/Krr7ijmbFSzvohGIMAL0enwmVWWdFmzaZTHUJAC6nO7M4fghk7XlFZEMWP5nOJ4heEfjFzpOowVpP4ZmCS2v2G49FBu+3Bnto3wsIGbIJPgj5V+806RVOX5LGmEuQaJGS5tB6+9/TiondsMKOmpO2/Ed5l6cW36pQcAM7cMBwKR3O5aXfasbjaFyF6R3XLX4MeniugngIs0FrImKwmHRBRCNN6QuyKRLeHzfmKo8N3Mm62+nNdp/aX6+n2pC4S0ayq4X/ftMUKhARRCTRi6PPSkOT/+MX3x9xHL0Lvtrnstma0PZ+C3Y9zkI/75ufXSurloMEkPAeeI3Ys4uaAQm/YT6yywnKvqFke5LbTcMop9gKR2MqhHTAZglsvsPBP2kOOl8UTnxFDCFORzXm4tR4alCFSVfHwYQ/MfnLzO7RfpimCBxd+n/eTTmtEGjl5ZydBvm/JpcU36qG323SBvVAT5aERmDDWkEHtyGcMMGX955W7JJLLjO5e2Tbcx2+e+C4f5GAHENMlcvzHd/67jo=
   app:
