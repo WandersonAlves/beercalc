@@ -25,9 +25,11 @@
     "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.30",
+    "protractor": "^5.1.1",
+    "protractor-http-mock": "^0.9.2",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.3",
     "run-sequence": "^1.1.5",
-    "wiredep": "^4.0.0",
-    "protractor": "^5.1.1"
+    "wiredep": "^4.0.0"
   },
   "scripts": {
     "test": "karma start --single-run --browsers PhantomJS",
