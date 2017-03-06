@@ -8,7 +8,7 @@ branches:
   - development
   - master
 notifications:
-  slack: $SLACK_KEY
+  slack: "$SLACK_KEY"
 addons:
   apt:
     sources:
@@ -23,7 +23,7 @@ cache:
   - bower_components
 before_script:
 - npm install -g codeclimate-test-reporter
-script:
+script: 
 after_script:
 - codeclimate-test-reporter < reports/coverage/lcov.info
 before_deploy: echo "" > .gitignore
@@ -36,4 +36,4 @@ deploy:
   on:
     repo: WandersonAlves/beercalc
   api_key:
-    secure: aKRdMeKIvTJ/JkMC/3vI2D3cDb4vjoUQKAoAg7ulAkG04qSi+GcEO0E89N3FDyJIGAA2GwQttnweyaqkH0sG+gqpefomrYZ833diSo7SUoId3UBp84f8XBu5spHzTfshb/coB5Ul/4O7JkM9vec37AP/9NIvcGy8WTJEF58ebI+uMz0I1xPcKBOivh4uLATQvUUxDpx/Qx6izp6Gv5uQjoH0MuSYNk42jZY9ngB0w36rFoLeKPHKbcqGBMwlg+x9vdSJZYA1hlg1y7wem/0gnsIXyJyYg+3/FrGqm9gMNthcrff91/+fnYe7+qvVGQDdZ/cVPJR6FeKCMFvvikbKXqyFmMI2dSBVy4T6KFVhWJHJnEYRN/uADUx3D9cShFMfe8xvIFRaTizPT4XJw5D1PrE44U+GEd4P18yOk2A1RyUzSKh2IQ1i9n/MbgHwLIen5FEGJAo2BUvG0lW+NuiKMzpmq3NsXFdiQmpMST+IR9kipy90CDrDOKz5sWXUm1YLHS35piE+/RFR61tH3qseyG7bpv+sivLRWxYat7IPiApa+ObRQiwn7cHDl/0CEn6N6cmZjdPSqsJIL1uFlIjSqK7WbIYyHS5HSD+R1BajG4jVxx9033ccr88HL9a3UxGPpwmXtYeUaUBQHF7YwA/88wvAf7t7BtYzKypP76kQ4/4=
+    secure: Ft/wvjpskIRaDSnwc1JE5wwxVv4D2lV9E/x5ObK8Hy9uhYWpRi2VCZRmnbedzV5VnHnKjndd+8KqP1ZEQwFV6k5JQsnnO7odcFMmWploDmvYZXqZ6ka3LY+RxM34FXjQjSOLcSfh3R4qCUMBeuvlWjsTYRsF8dyV0Qgxi2pw/IgHt15RpWBlPhsdDsQ24xoE9uj+SfjHNNf2BXBhj8k3xTSTcQ8nswln1EZ473s2cbPKUpx+6QGHvFpGhNXrV7lcfQaGw8JwJm8GqBndOKo0GEB+B0cTCSV0CtgCBg/iIz9WGGn4iXC25Ai5lxwLJ/1yWxT98okOktK+afCqOcg4XJeUpbfh3UvMTYHUkt+SOQW9jc72QT8t9/OeD7Z13igMkOJ3je2yAu0kEy5iJH9L1/3TlAHL6t4yR2OdWMsxzvNVTE6MgAXCwBKZZNWBvTew884/NtKJDepOvPrL+96o5Cor4VoLM29bHiWefi9AKyt7QUbXihCBJBfsbypcIdJhACgQrnx24CPR/6WMwbj7H/FiVcKO8JIBwZMwahWnIQW6Ys9v3wUeZL8z4NRzOPKghe8NIxZvms6iqGPMZtm5gtTL8AfWWfUJBQjKfPv0RnakeT0m65RNWjkQHYIbXrFUzOB1kpeZou9mcaLt2mvoA6QmH2B5b0Ultm7DzvFCNm4=
