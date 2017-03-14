@@ -4,7 +4,7 @@
         .module('beercalc')
         .service('AuthService', AuthService);
 
-    function AuthService(lock, authManager) {
+    function AuthService(lock, authManager, ProfileFactory, CurrentUserObserver) {
 
         function login() {
             lock.show();
@@ -14,23 +14,25 @@
         function registerAuthenticationListener() {
             lock.on('authenticated', function(authResult) {
                 localStorage.setItem('id_token', authResult.idToken);
-                lock.getUserInfo(authResult.accessToken, function(error, profile) {
+                lock.getProfile(authResult.idToken, function(error, profile) {
                     if (error) {
                         // Handle error
+                        // TODO: Handle the fucking error
                         return;
                     }
-                    localStorage.setItem('accessToken', authResult.accessToken);
                     localStorage.setItem('profile', JSON.stringify(profile));
+                    authManager.authenticate();
+                    var profileParsed = JSON.parse(localStorage.getItem('profile')) || null;
+                    var constructedProfile = ProfileFactory.constructUserLoginProfile(profileParsed);
+                    CurrentUserObserver.setSideProfileStats(constructedProfile);
                 });
-                authManager.authenticate();
             });
-            if (localStorage.getItem('id_token')) {
-                authManager.authenticate();
-            }
         }
 
         function logout() {
             localStorage.removeItem('id_token');
+            localStorage.removeItem('profile');
+            CurrentUserObserver.setSideProfileStats(null);
             authManager.unauthenticate();
         }
         return {

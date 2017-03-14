@@ -18,11 +18,11 @@
 
         this.observeCurrentState = function() {
             return defer.promise;
-        }
+        };
 
         this.setCurrentState = function(currentState) {
             self.currentState = currentState;
             defer.notify(self.currentState);
-        }
+        };
     }
 })();

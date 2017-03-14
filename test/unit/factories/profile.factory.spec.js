@@ -23,7 +23,7 @@
         }));
 
         it("should construct user object from response", inject(function() {
-            expect(profile.constructUserResponseFromGoogle(mockedResponse)).toEqual(mockedReturn);
+            expect(profile.constructUserLoginProfile(mockedResponse)).toEqual(mockedReturn);
         }));
 
     });

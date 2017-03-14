@@ -1,8 +1,8 @@
 self.addEventListener('push', function(event) {
     console.log('[Service Worker] Push Received.');
 
-    const title = 'BeerCalc';
-    const options = {
+    var title = 'BeerCalc';
+    var options = {
         body: event.data.text(),
         icon: 'res/logo.png',
         badge: 'res/logo.png'
