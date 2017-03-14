@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>BeerCalc!!!</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Wanderson Alves">
@@ -44,7 +44,7 @@
                         <p>Nivel {{navController.currentUser.level}}</p>
                     </div>
                 </md-list-item>
-                <md-list-item class="fade-element-in md-3-line" ng-click="navController.loginWithGoogle()" ng-if="!navController.currentUser">
+                <md-list-item class="fade-element-in md-3-line" ng-click="navController.loginAuth0()" ng-if="!navController.currentUser">
                     <div class="md-list-item-text" layout="column">
                         <h3>Login</h3>
                     </div>
@@ -76,13 +76,15 @@
     </div>
     <!-- <script src="https://apis.google.com/js/platform.js"></script> -->
     <!-- build:js main.js -->
-    <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/please-wait/build/please-wait.min.js"></script>
     <script src="controllers/loading-screen.controller.js"></script>
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/auth0-lock/build/lock.js"></script>
+    <script src="bower_components/angular-lock/dist/angular-lock.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
@@ -92,10 +94,10 @@
     <script src="config/beercalc.module.js"></script>
     <script src="config/beercalc.config.js"></script>
     <script src="config/beercalc.routes.js"></script>
+    <script src="services/auth-service/auth.service.js"></script>
     <script src="config/beercalc.run.js"></script>
     <script src="factories/side-menu.factory.js"></script>
     <script src="factories/profile.factory.js"></script>
-    <script src="factories/wrappers/firebase.wrapper.js"></script>
     <script src="services/observers/currentState.observer.js"></script>
     <script src="services/observers/currentUser.observer.js"></script>
     <script src="services/mock-server/mock.service.js"></script>
