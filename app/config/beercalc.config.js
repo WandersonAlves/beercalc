@@ -3,7 +3,7 @@
 		.module('beercalc')
 		.config(config);
 
-	function config($mdThemingProvider, lockProvider) {
+	function config($mdThemingProvider, $provide, lockProvider) {
 		$mdThemingProvider.theme('default').primaryPalette('deep-orange').dark();
 		lockProvider.init({
       clientID: 'l1OFijv6yxRnOEHZyiaKXOj7iRJKnm2r',
