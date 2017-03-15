@@ -14,6 +14,7 @@ module.exports = function (config) {
 			'app/bower_components/jquery/dist/jquery.min.js',
 			'app/bower_components/angular/angular.js',
 			'node_modules/angular-mocks/angular-mocks.js',
+			'node_modules/ng-describe/dist/ng-describe.js',
 			'app/bower_components/angular-ui-router/release/angular-ui-router.js',
 			'app/bower_components/auth0-lock/build/lock.js',
 			'app/bower_components/angular-lock/dist/angular-lock.js',
@@ -90,5 +91,5 @@ module.exports = function (config) {
 		// Concurrency level
 		// how many browser should be started simultaneous
 		concurrency: Infinity
-	})
-}
+	});
+};
