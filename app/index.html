@@ -30,7 +30,7 @@
             <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
                 <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
             </md-button>
-            <h2><span class="md-title">{{navController.currentState}}</span></h2>
+            <h6>{{navController.currentState}}</h6>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
@@ -54,7 +54,6 @@
                 <md-list>
                     <div ng-repeat="($index, menu) in navController.sideMenuOptions">
                         <md-list-item class="md-body-1" ng-click="navController.goto(menu)">
-                            <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
                             <p>{{menu.label}}</p>
                         </md-list-item>
                     </div>
@@ -94,13 +93,13 @@
     <script src="config/beercalc.module.js"></script>
     <script src="config/beercalc.config.js"></script>
     <script src="config/beercalc.routes.js"></script>
+    <script src="services/utils/common.service.js"></script>
     <script src="services/auth-service/auth.service.js"></script>
     <script src="config/beercalc.run.js"></script>
     <script src="factories/side-menu.factory.js"></script>
     <script src="factories/profile.factory.js"></script>
     <script src="services/observers/currentState.observer.js"></script>
     <script src="services/observers/currentUser.observer.js"></script>
-    <script src="services/mock-server/mock.service.js"></script>
     <script src="controllers/navigation.controller.js"></script>
     <script src="controllers/profile.controller.js"></script>
     <script src="controllers/bills.controller.js"></script>

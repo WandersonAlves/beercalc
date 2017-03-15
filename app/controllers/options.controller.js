@@ -13,7 +13,12 @@
 
     function OptionsController($scope, $state, CurrentStateObserver, CurrentUserObserver, AuthService) {
         var vm = this;
-        vm.logoutAuth0 = logoutAuth0;        
+        vm.logoutAuth0 = logoutAuth0;
+        vm.changeTheme = changeTheme;
+
+        function changeTheme() {
+            
+        }
 
         function logoutAuth0() {
           AuthService.logout();

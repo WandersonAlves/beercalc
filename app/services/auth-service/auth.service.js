@@ -4,7 +4,7 @@
         .module('beercalc')
         .service('AuthService', AuthService);
 
-    function AuthService(lock, authManager, ProfileFactory, CurrentUserObserver) {
+    function AuthService(lock, authManager, ProfileFactory, CurrentUserObserver, CommonService) {
 
         function login() {
             lock.show();
@@ -30,10 +30,17 @@
         }
 
         function logout() {
-            localStorage.removeItem('id_token');
-            localStorage.removeItem('profile');
-            CurrentUserObserver.setSideProfileStats(null);
-            authManager.unauthenticate();
+            var ls = localStorage;
+            if (ls.getItem('id_token') && ls.getItem('profile') && CurrentUserObserver.getSideProfileStats()) {
+                ls.removeItem('id_token');
+                ls.removeItem('profile');
+                CurrentUserObserver.setSideProfileStats(null);
+                authManager.unauthenticate();
+                CommonService.showSimpleToast('bottom', 'Usuario deslogado com sucesso!', 3000);
+            }
+            else {
+                CommonService.showSimpleToast('bottom', 'Nenhum usuario logado.', 3000);
+            }
         }
         return {
             login: login,
