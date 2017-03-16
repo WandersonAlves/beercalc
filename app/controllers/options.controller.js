@@ -17,15 +17,11 @@
         vm.changeTheme = changeTheme;
 
         function changeTheme() {
-            
+
         }
 
         function logoutAuth0() {
           AuthService.logout();
         }
-
-        var init = function() {
-            CurrentStateObserver.setCurrentState('Configurações');
-        }();
     }
 })();

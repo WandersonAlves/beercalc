@@ -30,7 +30,7 @@
             <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
                 <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
             </md-button>
-            <h6>{{navController.currentState}}</h6>
+            <h3 class="md-display-2">{{navController.currentState}}</h3>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
@@ -38,7 +38,7 @@
             <md-toolbar>
                 <md-list-item class="fade-element-in md-3-line" ng-click="null" ng-if="navController.currentUser">
                     <img class="md-avatar" ng-src="{{navController.currentUser.avatar}}" />
-                    <div class="md-list-item-text" layout="column">
+                    <div class="md-list-item-text font-9-em" layout="column">
                         <h3>{{navController.currentUser.name}}</h3>
                         <h4>{{navController.currentUser.title}}</h4>
                         <p>Nivel {{navController.currentUser.level}}</p>
@@ -73,7 +73,6 @@
             </div>
         </md-content>
     </div>
-    <!-- <script src="https://apis.google.com/js/platform.js"></script> -->
     <!-- build:js main.js -->
     <script src="bower_components/please-wait/build/please-wait.min.js"></script>
     <script src="controllers/loading-screen.controller.js"></script>

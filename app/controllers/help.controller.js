@@ -13,9 +13,5 @@
 
     function HelpController($scope, $state, CurrentStateObserver) {
         var vm = this;
-
-        var init = function() {
-            CurrentStateObserver.setCurrentState('Ajuda');
-        }();
     }
 })();

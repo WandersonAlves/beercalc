@@ -60,7 +60,6 @@
          *
          */
         var init = function() {
-            CurrentStateObserver.setCurrentState('Home');
             vm.sideMenuOptions = SideMenuFactory.constructSideMenu();
         }();
 

@@ -13,9 +13,5 @@
 
     function BillsController($scope, $state, CurrentStateObserver) {
         var vm = this;
-
-        var init = function() {
-            CurrentStateObserver.setCurrentState('Contas');
-        }();
     }
 })();
