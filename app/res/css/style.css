@@ -1,14 +1,13 @@
+.font-9-em {
+  font-size: 0.9em;
+}
+
 .avatar-img {
     margin-top: 35px;
     width: 148px;
     border-radius: 150px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
-}
-
-.line-height-10 {
-    line-height: 10px;
-    text-align: center;
 }
 
 .fade-element-in.ng-enter {
