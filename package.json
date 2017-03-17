@@ -25,6 +25,7 @@
     "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.30",
+    "ng-describe": "^1.8.0",
     "protractor": "^5.1.1",
     "protractor-http-mock": "^0.9.2",
     "protractor-jasmine2-screenshot-reporter": "^0.3.3",
