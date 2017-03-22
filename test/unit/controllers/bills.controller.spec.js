@@ -22,7 +22,7 @@
             });
         }));
 
-        it("should set the nav title to 'Contas'", inject(function(_CurrentStateObserver_) {
+        xit("should set the nav title to 'Contas'", inject(function(_CurrentStateObserver_) {
             expect(_CurrentStateObserver_.setCurrentState).toHaveBeenCalledWith('Contas');
         }));
 

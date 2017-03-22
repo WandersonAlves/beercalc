@@ -11,35 +11,18 @@
         .module('beercalc')
         .controller('NavigationController', NavigationController);
 
-    function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, CurrentStateObserver, CurrentUserObserver, Firebase,
-        ProfileFactory) {
+    function NavigationController($scope, $log, $timeout, $mdSidenav, $state, SideMenuFactory, CurrentStateObserver, CurrentUserObserver,
+        ProfileFactory, AuthService) {
         var vm = this;
         // NOTE Public functions
         vm.toggle = toggle;
         vm.goto = goto;
-        vm.loginWithGoogle = loginWithGoogle;
-        vm.logoutWithGoogle = logoutWithGoogle;
+        vm.loginAuth0 = loginAuth0;
         // NOTE Public attrs
         vm.currentState = null;
 
-        function loginWithGoogle() {
-            var provider = Firebase.getGoogleAuthProvider();
-            Firebase.getFirebase().auth().signInWithPopup(provider).then(function(result) {
-                console.log('Login with Google success!', result);
-                var currentUser = ProfileFactory.constructUserResponseFromGoogle(result);
-                CurrentUserObserver.setSideProfileStats(currentUser);
-            }).catch(function(error) {
-                // Handle Errors here.
-                console.log('Login with Google failed :(', error);
-            });
-        }
-
-        function logoutWithGoogle() {
-            Firebase.getFirebase().signOut().then(function() {
-                vm.currentUser = null;
-            }, function(error) {
-                // An error happened.
-            });
+        function loginAuth0() {
+          AuthService.login();
         }
 
         /**
@@ -77,7 +60,6 @@
          *
          */
         var init = function() {
-            CurrentStateObserver.setCurrentState('Home');
             vm.sideMenuOptions = SideMenuFactory.constructSideMenu();
         }();
 

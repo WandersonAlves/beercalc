@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>BeerCalc!!!</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Wanderson Alves">
@@ -25,12 +25,12 @@
 </head>
 
 <body layout="column" ng-cloak ng-controller="NavigationController as navController">
-    <md-toolbar md-scroll-shrink md-whiteframe="8">
+    <md-toolbar md-scroll-shrink>
         <div class="md-toolbar-tools">
             <md-button ng-click="navController.toggle()" class="md-icon-button" aria-label="Settings">
                 <md-icon md-svg-icon="res/svg/ic_menu_white_24px.svg"></md-icon>
             </md-button>
-            <h2><span class="md-title">{{navController.currentState}}</span></h2>
+            <h3 class="md-display-2">{{navController.currentState}}</h3>
         </div>
     </md-toolbar>
     <div class="container" layout="row" flex>
@@ -38,13 +38,13 @@
             <md-toolbar>
                 <md-list-item class="fade-element-in md-3-line" ng-click="null" ng-if="navController.currentUser">
                     <img class="md-avatar" ng-src="{{navController.currentUser.avatar}}" />
-                    <div class="md-list-item-text" layout="column">
+                    <div class="md-list-item-text font-9-em" layout="column">
                         <h3>{{navController.currentUser.name}}</h3>
                         <h4>{{navController.currentUser.title}}</h4>
                         <p>Nivel {{navController.currentUser.level}}</p>
                     </div>
                 </md-list-item>
-                <md-list-item class="fade-element-in md-3-line" ng-click="navController.loginWithGoogle()" ng-if="!navController.currentUser">
+                <md-list-item class="fade-element-in md-3-line" ng-click="navController.loginAuth0()" ng-if="!navController.currentUser">
                     <div class="md-list-item-text" layout="column">
                         <h3>Login</h3>
                     </div>
@@ -54,7 +54,6 @@
                 <md-list>
                     <div ng-repeat="($index, menu) in navController.sideMenuOptions">
                         <md-list-item class="md-body-1" ng-click="navController.goto(menu)">
-                            <md-icon md-svg-icon="{{menu.icon}}"></md-icon>
                             <p>{{menu.label}}</p>
                         </md-list-item>
                     </div>
@@ -74,15 +73,16 @@
             </div>
         </md-content>
     </div>
-    <!-- <script src="https://apis.google.com/js/platform.js"></script> -->
     <!-- build:js main.js -->
-    <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/please-wait/build/please-wait.min.js"></script>
     <script src="controllers/loading-screen.controller.js"></script>
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/auth0-lock/build/lock.js"></script>
+    <script src="bower_components/angular-lock/dist/angular-lock.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
@@ -92,13 +92,13 @@
     <script src="config/beercalc.module.js"></script>
     <script src="config/beercalc.config.js"></script>
     <script src="config/beercalc.routes.js"></script>
+    <script src="services/utils/common.service.js"></script>
+    <script src="services/auth-service/auth.service.js"></script>
     <script src="config/beercalc.run.js"></script>
     <script src="factories/side-menu.factory.js"></script>
     <script src="factories/profile.factory.js"></script>
-    <script src="factories/wrappers/firebase.wrapper.js"></script>
     <script src="services/observers/currentState.observer.js"></script>
     <script src="services/observers/currentUser.observer.js"></script>
-    <script src="services/mock-server/mock.service.js"></script>
     <script src="controllers/navigation.controller.js"></script>
     <script src="controllers/profile.controller.js"></script>
     <script src="controllers/bills.controller.js"></script>

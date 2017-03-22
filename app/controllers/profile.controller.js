@@ -10,7 +10,7 @@
     angular
         .module('beercalc')
         .controller('ProfileController', ProfileController);
-        
+
     function ProfileController($scope, $state, CurrentStateObserver, CurrentUserObserver) {
         var vm = this;
 
@@ -19,9 +19,5 @@
         CurrentUserObserver.observeSideProfileStats().then(null, null, function(currentUser) {
             vm.currentUser = currentUser;
         });
-
-        var init = function() {
-            CurrentStateObserver.setCurrentState('Perfil');
-        }();
     }
 })();

@@ -3,17 +3,22 @@
 
 	function ProfileFactory() {
 		return {
-			constructUserResponseFromGoogle: constructUserResponseFromGoogle
+			constructUserLoginProfile: constructUserLoginProfile
 		};
 
-		function constructUserResponseFromGoogle(response) {
+		function constructUserLoginProfile(auth0Info, databaseInfo) {
+			databaseInfo = databaseInfo || {
+				level: 20,
+				title: 'Brewmaster',
+				currExp: 67
+			};
       return {
-          "avatar": response.user.photoURL,
-          "name": response.user.displayName,
-          "level": "20",
-          "title": "Brewmaster",
-          "currExp": 67
-      }
+          "avatar": auth0Info.picture,
+          "name": auth0Info.name,
+          "level": databaseInfo.level,
+          "title": databaseInfo.title,
+          "currExp": databaseInfo.currExp
+      };
     }
 	}
 })();

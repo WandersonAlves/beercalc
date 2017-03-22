@@ -18,15 +18,15 @@
 
         this.observeSideProfileStats = function() {
             return defer.promise;
-        }
+        };
 
         this.setSideProfileStats = function(sideProfileStats) {
             self.sideProfileStats = sideProfileStats;
             defer.notify(self.sideProfileStats);
-        }
+        };
 
         this.getSideProfileStats = function() {
             return self.sideProfileStats;
-        }
+        };
     }
 })();

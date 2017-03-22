@@ -11,7 +11,7 @@
         var SOCIAL = 'recomendations';
         var SPECIAL = 'special';
         // NOTE This const is equal the number of routes that application have
-        var TOTAL_ROUTES = 6;
+        var TOTAL_ROUTES = 7;
 
         beforeEach(module("beercalc"));
 

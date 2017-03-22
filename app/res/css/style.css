@@ -1,14 +1,13 @@
+.font-9-em {
+  font-size: 0.9em;
+}
+
 .avatar-img {
     margin-top: 35px;
     width: 148px;
     border-radius: 150px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
-}
-
-.line-height-10 {
-    line-height: 10px;
-    text-align: center;
 }
 
 .fade-element-in.ng-enter {
@@ -30,6 +29,20 @@
 }
 .fade-element-in.ng-leave.ng-leave-active {
   opacity: 0;
+}
+
+.heart {
+  fill: red;
+  position: relative;
+  top: 5px;
+  width: 50px;
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
 
 /* start 'enter' transition on main view */

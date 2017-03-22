@@ -11,21 +11,17 @@
         .module('beercalc')
         .controller('OptionsController', OptionsController);
 
-    function OptionsController($scope, $state, CurrentStateObserver, CurrentUserObserver, Firebase) {
+    function OptionsController($scope, $state, CurrentStateObserver, CurrentUserObserver, AuthService) {
         var vm = this;
-        vm.logoutUser = logoutUser;
+        vm.logoutAuth0 = logoutAuth0;
+        vm.changeTheme = changeTheme;
 
-        function logoutUser() {
-            Firebase.getFirebase().auth().signOut().then(function() {
-                // Sign-out successful.
-                CurrentUserObserver.setSideProfileStats(null);
-            }, function(error) {
-                // An error happened.
-            });
+        function changeTheme() {
+
         }
 
-        var init = function() {
-            CurrentStateObserver.setCurrentState('Configurações');
-        }();
+        function logoutAuth0() {
+          AuthService.logout();
+        }
     }
 })();

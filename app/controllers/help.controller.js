@@ -11,14 +11,7 @@
         .module('beercalc')
         .controller('HelpController', HelpController);
 
-    function HelpController($scope, $state, CurrentStateObserver, MockService) {
+    function HelpController($scope, $state, CurrentStateObserver) {
         var vm = this;
-
-        var init = function() {
-            CurrentStateObserver.setCurrentState('Ajuda');
-            MockService.sampleService().then(function(result) {
-                console.log(result);
-            });
-        }();
     }
 })();
