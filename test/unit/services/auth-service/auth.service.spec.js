@@ -71,6 +71,7 @@
         afterEach(function() {
             httpBackend.verifyNoOutstandingExpectation();
             httpBackend.verifyNoOutstandingRequest();
+            localStorage.clear();
         });
 
         it('should login', function() {
