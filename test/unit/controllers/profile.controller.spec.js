@@ -24,9 +24,13 @@
             spyOn(CurrentUserObserver, 'getSideProfileStats').and.returnValue(loggedUserResolve);
         }));
 
-        it('should get current logged user from CurrentUserObserver.getSideProfileStats', function () {
+        xit('should get current logged user from CurrentUserObserver.getSideProfileStats', inject(function () {
             expect(controller.currentUser).toBe(loggedUserResolve);
-        });
+        }));
+
+        xit('should notify CurrentUserObserver with loggedUserResolve', inject(function ($timeout) {
+            $timeout.flush();
+        }));
 
 
     });
