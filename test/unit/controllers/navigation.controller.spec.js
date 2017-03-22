@@ -4,16 +4,18 @@
     describe('controllers/navigation.controller.js', function() {
         var navController,
             scope,
-            mdSidenav;
+            mdSidenav,
+            AuthService;
         beforeEach(module("beercalc"));
 
         var toggleMock = jasmine.createSpy();
         var $q;
         var deferred;
 
-        beforeEach(inject(function($templateCache, _$q_, $rootScope, $state, $controller, $mdSidenav, _SideMenuFactory_, _CurrentStateObserver_, _CurrentUserObserver_) {
+        beforeEach(inject(function($templateCache, _$q_, $rootScope, $state, $controller, $mdSidenav, _SideMenuFactory_, _CurrentStateObserver_, _CurrentUserObserver_, _AuthService_) {
             $templateCache.put('/views/home-view.html', '');
             scope = $rootScope.$new();
+            AuthService = _AuthService_;
             $q = _$q_;
             deferred = _$q_.defer();
             mdSidenav = jasmine.createSpy().and.callFake(function() {
@@ -24,6 +26,7 @@
             spyOn($state, 'go');
             spyOn(_CurrentStateObserver_, 'observeCurrentState').and.returnValue(deferred.promise);
             spyOn(_CurrentUserObserver_, 'observeSideProfileStats').and.returnValue(deferred.promise);
+            spyOn(_AuthService_, 'login');
             navController = new $controller('NavigationController', {
                 $scope: scope,
                 $mdSidenav: mdSidenav,
@@ -91,6 +94,11 @@
         it("when click on menu, should toggle sidenav", function() {
             navController.toggle();
             expect(toggleMock).toHaveBeenCalled();
+        });
+
+        it("should login user", function() {
+            navController.loginAuth0();
+            expect(AuthService.login).toHaveBeenCalled();
         });
     });
 

@@ -11,7 +11,7 @@
         .module('beercalc')
         .controller('ProfileController', ProfileController);
 
-    function ProfileController($scope, $state, CurrentStateObserver, CurrentUserObserver) {
+    function ProfileController(CurrentUserObserver) {
         var vm = this;
 
         vm.currentUser = CurrentUserObserver.getSideProfileStats();

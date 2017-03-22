@@ -11,7 +11,7 @@
         .module('beercalc')
         .controller('SocialController', SocialController);
 
-    function SocialController($scope, $state, CurrentStateObserver) {
+    function SocialController() {
         var vm = this;
     }
 })();

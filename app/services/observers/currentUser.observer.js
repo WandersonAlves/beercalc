@@ -10,8 +10,6 @@
         .module('beercalc')
         .service('CurrentUserObserver', CurrentUserObserver);
 
-    CurrentUserObserver.$inject = ['$q'];
-
     function CurrentUserObserver($q) {
         var self = this,
             defer = $q.defer();

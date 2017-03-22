@@ -9,9 +9,7 @@
     angular
         .module('beercalc')
         .service('CurrentStateObserver', CurrentStateObserver);
-
-    CurrentStateObserver.$inject = ['$q'];
-
+        
     function CurrentStateObserver($q) {
         var self = this,
             defer = $q.defer();

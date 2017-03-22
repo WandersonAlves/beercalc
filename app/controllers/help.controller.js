@@ -11,7 +11,7 @@
         .module('beercalc')
         .controller('HelpController', HelpController);
 
-    function HelpController($scope, $state, CurrentStateObserver) {
+    function HelpController() {
         var vm = this;
     }
 })();

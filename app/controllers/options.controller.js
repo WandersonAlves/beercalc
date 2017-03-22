@@ -4,21 +4,16 @@
      * @ngdoc controller
      * @name beercalc.controller:OptionsController
      * @description
-     * Controller that controlls social state
+     * Controller that controlls configuration state
      *
      */
     angular
         .module('beercalc')
         .controller('OptionsController', OptionsController);
 
-    function OptionsController($scope, $state, CurrentStateObserver, CurrentUserObserver, AuthService) {
+    function OptionsController(AuthService) {
         var vm = this;
         vm.logoutAuth0 = logoutAuth0;
-        vm.changeTheme = changeTheme;
-
-        function changeTheme() {
-
-        }
 
         function logoutAuth0() {
           AuthService.logout();

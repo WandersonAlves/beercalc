@@ -11,7 +11,7 @@
         .module('beercalc')
         .controller('BillsController', BillsController);
 
-    function BillsController($scope, $state, CurrentStateObserver) {
+    function BillsController() {
         var vm = this;
     }
 })();

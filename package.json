@@ -34,7 +34,7 @@
   },
   "scripts": {
     "test": "karma start --single-run --browsers PhantomJS",
-    "test-debug": "karma start --browsers Chrome",
+    "test-debug": "karma start --single-run=false --browsers Chrome",
     "start": "NODE_ENV=production node server.js",
     "dev": "hs app/ -c -1",
     "postinstall": "bower install && gulp build"
