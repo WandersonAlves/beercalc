@@ -3,7 +3,8 @@
 
     describe('controllers/profile.controller.js', function() {
         var controller,
-            CurrentUserObserver;
+            CurrentUserObserver,
+            rootScope;
         beforeEach(module("beercalc"));
 
         var loggedUserResolve = {
@@ -16,23 +17,20 @@
             }
         };
 
-        beforeEach(inject(function($injector, $controller) {
+        beforeEach(inject(function($injector, $controller, $q, $templateCache, $rootScope) {
+            $templateCache.put('/views/home-view.html', '');
+            rootScope = $rootScope;
             CurrentUserObserver = $injector.get('CurrentUserObserver');
             controller = $controller('ProfileController', {
                 'CurrentUserObserver': CurrentUserObserver
             });
-            spyOn(CurrentUserObserver, 'getSideProfileStats').and.returnValue(loggedUserResolve);
         }));
 
-        xit('should get current logged user from CurrentUserObserver.getSideProfileStats', inject(function () {
-            expect(controller.currentUser).toBe(loggedUserResolve);
-        }));
-
-        xit('should notify CurrentUserObserver with loggedUserResolve', inject(function ($timeout) {
-            $timeout.flush();
-        }));
-
-
+        it('should notify CurrentUserObserver with loggedUserResolve', function() {
+          CurrentUserObserver.setSideProfileStats(loggedUserResolve);
+          rootScope.$digest();
+          expect(controller.currentUser).toBe(loggedUserResolve);
+        });
     });
 
 })();
