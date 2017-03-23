@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Aplicativo beercalc",
   "main": "server.js",
+  "engines": {
+    "node": "6.9.x"
+  },
   "devDependencies": {
     "angular-mocks": "^1.5.8",
     "browser-sync": "^2.11.1",
