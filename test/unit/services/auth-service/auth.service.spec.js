@@ -7,8 +7,7 @@
             currentUserObserver,
             authManager,
             commonService,
-            rootScope,
-            httpBackend;
+            rootScope;
 
         var authResult = {
             "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JlZXJjYWxjLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExNDEyNjg1Mzg5NjI3NjYwMTMwNCIsImF1ZCI6ImwxT0ZpanY2eXhSbk9FSFp5aWFLWE9qN2lSSktubTJyIiwiZXhwIjoxNDkwMjQ3MjkwLCJpYXQiOjE0OTAyMTEyOTB9.IUlc0HsY8LnXc06Cj3TtC6BrpW-qII0TjC8pWGBght8",
@@ -48,7 +47,7 @@
             module('beercalc');
         });
 
-        beforeEach(inject(function($injector, _$window_, $rootScope, $templateCache, $httpBackend) {
+        beforeEach(inject(function($injector, _$window_, $rootScope, $templateCache) {
             $templateCache.put('/views/home-view.html', '');
             authService = $injector.get('AuthService');
             lock = $injector.get('lock');
@@ -57,7 +56,6 @@
             commonService = $injector.get('CommonService');
             localStorage = _$window_.localStorage;
             rootScope = $rootScope;
-            httpBackend = $httpBackend;
 
             spyOn(lock, 'show');
             spyOn(authManager, 'unauthenticate');
@@ -69,8 +67,6 @@
         }));
 
         afterEach(function() {
-            httpBackend.verifyNoOutstandingExpectation();
-            httpBackend.verifyNoOutstandingRequest();
             localStorage.clear();
         });
 
@@ -101,20 +97,25 @@
             });
         });
 
-        it('should register Authentication', function() {
-            httpBackend.whenPOST('https://beercalc.auth0.com/tokeninfo').respond(true);
-            spyOn(localStorage, 'setItem');
-            spyOn(lock, 'getProfile').and.callThrough();
+        describe('_getProfileCallback()', function() {
+            it('should register Authentication', function() {
+                spyOn(localStorage, 'setItem');
+                spyOn(lock, 'getProfile');
+                authService.registerAuthenticationListener();
+                lock.emit('authenticated', authResult);
+                expect(localStorage.setItem).toHaveBeenCalledWith('id_token', authResult.idToken);
+                expect(lock.getProfile).toHaveBeenCalledWith(authResult.idToken, jasmine.any(Function));
+            });
 
-            authService.registerAuthenticationListener();
-            httpBackend.flush();
-            lock.emit('authenticated', authResult);
-            expect(localStorage.setItem).toHaveBeenCalledWith('id_token', authResult.idToken);
+            it('should execute callback without error after authentication resgistered', function() {
+                authService._getProfileCallback(null, authResult);
+                expect(currentUserObserver.setSideProfileStats).toHaveBeenCalled();
+            });
 
-            // httpBackend.expectPOST('https://beercalc.auth0.com/tokeninfo').respond([]);
-
-            // httpBackend.flush();
-            // expect(localStorage.setItem).toHaveBeenCalledWith('profile');
+            it('should execute callback with error after authentication resgistered', function() {
+                authService._getProfileCallback(true, authResult);
+                expect(currentUserObserver.setSideProfileStats).not.toHaveBeenCalled();
+            });
         });
     });
 })();

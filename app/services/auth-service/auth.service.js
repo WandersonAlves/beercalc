@@ -6,6 +6,19 @@
 
     function AuthService(lock, authManager, ProfileFactory, CurrentUserObserver, CommonService) {
 
+        var _getProfileCallback = function(error, profile) {
+            if (error) {
+                // Handle error
+                // TODO: Handle the fucking error
+                return;
+            }
+            localStorage.setItem('profile', JSON.stringify(profile));
+            authManager.authenticate();
+            var profileParsed = JSON.parse(localStorage.getItem('profile'));
+            var constructedProfile = ProfileFactory.constructUserLoginProfile(profileParsed);
+            CurrentUserObserver.setSideProfileStats(constructedProfile);
+        };
+
         function login() {
             lock.show();
         }
@@ -14,18 +27,7 @@
         function registerAuthenticationListener() {
             lock.on('authenticated', function(authResult) {
                 localStorage.setItem('id_token', authResult.idToken);
-                lock.getProfile(authResult.idToken, function(error, profile) {
-                    if (error) {
-                        // Handle error
-                        // TODO: Handle the fucking error
-                        return;
-                    }
-                    localStorage.setItem('profile', JSON.stringify(profile));
-                    authManager.authenticate();
-                    var profileParsed = JSON.parse(localStorage.getItem('profile')) || null;
-                    var constructedProfile = ProfileFactory.constructUserLoginProfile(profileParsed);
-                    CurrentUserObserver.setSideProfileStats(constructedProfile);
-                });
+                lock.getProfile(authResult.idToken, _getProfileCallback);
             });
         }
 
@@ -45,7 +47,8 @@
         return {
             login: login,
             registerAuthenticationListener: registerAuthenticationListener,
-            logout: logout
+            logout: logout,
+            _getProfileCallback: _getProfileCallback
         };
     }
 })();
