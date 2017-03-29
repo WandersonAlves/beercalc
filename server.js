@@ -1,17 +1,36 @@
 var express = require("express"),
     app = express(),
-    path = require("path");
+    path = require("path"),
+    httpProxy = require('http-proxy'),
+    apiProxy = httpProxy.createProxyServer(),
+    apiServer = 'http://localhost:8081';
 
 const PORT = process.env.PORT || 8080;
+/**
+ * Starting the reserve proxy *
+ */
+const ENV = process.env.NODE_ENV;
+let FOLDER;
 
-app.use('/res', express.static(__dirname + '/public/res'));
-app.use('/', express.static(__dirname + '/public/'));
+if (ENV !== 'production') {
+  FOLDER = '/app';
+}
+else {
+  FOLDER = '/public';
+}
+
+app.use('/res', express.static(__dirname + `${FOLDER}/res`));
+app.use('/', express.static(__dirname + `${FOLDER}/`));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
-    //__dirname : It will resolve to your project folder.
+    res.sendFile(path.join(__dirname + `${FOLDER}/index.html`));
+});
+
+app.all("/api/*", function(req, res) {
+    // NOTE: Route the request to another server in another place
+    apiProxy.web(req, res, {target: apiServer});
 });
 
 app.listen(PORT);
 
-console.log("Running at Port", PORT);
+console.log(`Runing at port ${PORT} on ${FOLDER} folder and in ${ENV} enviroment`);
