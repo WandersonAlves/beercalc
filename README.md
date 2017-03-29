@@ -4,6 +4,9 @@
 
 Aplication for bills manangement.
 
+* [Development Env](https://beercalc-development.herokuapp.com)
+* [Master Env](https://beercalc-app.herokuapp.com)
+
 ## Getting Started
 
 Instructions to run and deploy above.
