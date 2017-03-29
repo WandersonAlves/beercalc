@@ -11,28 +11,32 @@ module.exports = function (config) {
 		frameworks: ['jasmine'],
 		// list of files / patterns to load in the browser
 		files: [
-			'bower_components/jquery/dist/jquery.min.js',
-			'bower_components/angular/angular.js',
+			'app/bower_components/jquery/dist/jquery.min.js',
+			'app/bower_components/angular/angular.js',
 			'node_modules/angular-mocks/angular-mocks.js',
-			'bower_components/angular-ui-router/release/angular-ui-router.js',
-			'bower_components/angular-aria/angular-aria.js',
-			'bower_components/angular-animate/angular-animate.js',
-			'bower_components/angular-material/angular-material.js',
-			'config/beercalc.module.js',
-			'config/beercalc.config.js',
-			'config/beercalc.routes.js',
-			'services/**/*.js',
-			'controllers/**/*.js',
-			'factories/**/*.js',
+			'node_modules/ng-describe/dist/ng-describe.js',
+			'app/bower_components/angular-ui-router/release/angular-ui-router.js',
+			'app/bower_components/auth0-lock/build/lock.js',
+			'app/bower_components/angular-lock/dist/angular-lock.js',
+			'app/bower_components/angular-jwt/dist/angular-jwt.js',
+			'app/bower_components/angular-aria/angular-aria.js',
+			'app/bower_components/angular-animate/angular-animate.js',
+			'app/bower_components/angular-material/angular-material.js',
+			'app/config/beercalc.module.js',
+			'app/config/beercalc.config.js',
+			'app/config/beercalc.routes.js',
+			'app/services/**/*.js',
+			'app/controllers/**/*.js',
+			'app/factories/**/*.js',
 			'test/**/*.js'
 		],
 		// list of files to exclude
-		exclude: ['controllers/loading-screen.controller.js'],
+		exclude: ['app/controllers/loading-screen.controller.js'],
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			"beercalc.routes.js": ["coverage"],
-			"!(bower_components|node_modules|public|reports|test)/**/!(*.spec).js": ["coverage"],
+			"app/beercalc.routes.js": ["coverage"],
+			"app/!(bower_components)/**/!(*.spec).js": ["coverage"],
 			"**/*.html": ["ng-html2js"]
 		},
 		// test results reporter to use
@@ -47,10 +51,10 @@ module.exports = function (config) {
 			subdir: "coverage",
 			check: {
 				global: {
-					statements: 90,
-					branches: 80,
-					functions: 90,
-					lines: 80
+					statements: 75,
+					branches: 75,
+					functions: 75,
+					lines: 75
 				}
 			}
 		},
@@ -74,11 +78,18 @@ module.exports = function (config) {
 		colors: true,
 		// level of logging
 		// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-		logLevel: config.LOG_INFO,
+		logLevel: config.INFO,
 		// enable / disable watching file and executing tests whenever any file changes
 		autoWatch: true,
+		// start these browsers
+		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+		browsers: ['PhantomJS'],
+		// Continuous Integration mode
+		// if true, Karma captures browsers, runs the tests and exits
+		singleRun: true,
+		browserNoActivityTimeout: 30000,
 		// Concurrency level
 		// how many browser should be started simultaneous
 		concurrency: Infinity
-	})
-}
+	});
+};

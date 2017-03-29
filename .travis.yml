@@ -2,13 +2,12 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-- '6.1'
+- '6.9'
+cache: yarn
 branches:
   only:
   - development
   - master
-notifications:
-  slack: barcalc:wbq6Qm07jiEVVJ5ZOnhR6mqu
 addons:
   apt:
     sources:
@@ -22,21 +21,18 @@ cache:
   - node_modules
   - bower_components
 before_script:
-- npm install -g gulp
-- npm install -g bower
 - npm install -g codeclimate-test-reporter
-- bower install
-script: 
+script:
 after_script:
 - codeclimate-test-reporter < reports/coverage/lcov.info
 before_deploy: echo "" > .gitignore
 deploy:
   provider: heroku
   skip_cleanup: true
+  api_key:
+    secure: HaMKijWxMXDa/gRI7MiffefIgx79eA/6DcUwMB2sRJKRqhBTHghM75eVov8bEIdFa32SHCdwL3Cf+VMyImsbYEKB+ahewqwFrpmqQkGoEDC6/pfRdWZYoSankigcrr656zecK3uEV2KkU8kVAGd+r2/Krr7ijmbFSzvohGIMAL0enwmVWWdFmzaZTHUJAC6nO7M4fghk7XlFZEMWP5nOJ4heEfjFzpOowVpP4ZmCS2v2G49FBu+3Bnto3wsIGbIJPgj5V+806RVOX5LGmEuQaJGS5tB6+9/TiondsMKOmpO2/Ed5l6cW36pQcAM7cMBwKR3O5aXfasbjaFyF6R3XLX4MeniugngIs0FrImKwmHRBRCNN6QuyKRLeHzfmKo8N3Mm62+nNdp/aX6+n2pC4S0ayq4X/ftMUKhARRCTRi6PPSkOT/+MX3x9xHL0Lvtrnstma0PZ+C3Y9zkI/75ufXSurloMEkPAeeI3Ys4uaAQm/YT6yywnKvqFke5LbTcMop9gKR2MqhHTAZglsvsPBP2kOOl8UTnxFDCFORzXm4tR4alCFSVfHwYQ/MfnLzO7RfpimCBxd+n/eTTmtEGjl5ZydBvm/JpcU36qG323SBvVAT5aERmDDWkEHtyGcMMGX955W7JJLLjO5e2Tbcx2+e+C4f5GAHENMlcvzHd/67jo=
   app:
     development: beercalc-development
     master: beercalc-app
   on:
     repo: WandersonAlves/beercalc
-  api_key:
-    secure: QwkevyF73ovVMR2kZpSKmESirsfa1EKj+FLNm71J/z5RzrhRaRcZjUbOc/Pgk0B+Cl0a9fk45LYV3U6KyLMDB/3dvLgamEmItrPOuk1ok3rH2dvAYrYj/gLX++kWPZ7RFuxvvnul8/09dS92keZ2yDRqZrLCK+wgPwDMVrMNU20YulvoXSb1tWjbi3tMKHh76FX3UZAU+CywmW/qxxcK+d3mkHeWYVQsu79fW5v9Th2/337h0S5wZfROfOOlZliP10/Lq2rCyTRhUpbJnEMO9D16sIEeVC17dWwzSQB23lYSMaeAzFDSYRKR+Uk0l5+aKPZUwd594Aj6d7hSkAVBbBrgzcXfqnOZRi9+0gUhihc8o/GQ+b7hA4cEdt7H+foJPkc6cV87t2/FhfyhA2YCIvmlM9sgb+5s1CDTUwwNQ3TSuZIbeGSlpTXaFQa33+IIkMREvXal/vFLL5EWXY667P4OJNvLGl46HRZknf3duACyw6E9w1S6F1Ghy/hTXt0v+8oayb7gqgFLscsBGFZnWESqMeID2uJeUTK/vtjafMLRYSfrtESOpmNj5c96tv+T+mywb+G+16uanlk4BtQ3aRDLGNHpG4tAdj+xLQtdT9pd2yMZrAMi6pG+RnHHjGhnh83g8UkRIvK+ny5ys/eRGjXqTbNbYBPT6bW51t8QuP4=

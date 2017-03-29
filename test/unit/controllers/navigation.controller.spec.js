@@ -4,25 +4,18 @@
     describe('controllers/navigation.controller.js', function() {
         var navController,
             scope,
-            mdSidenav;
+            mdSidenav,
+            AuthService;
         beforeEach(module("beercalc"));
 
         var toggleMock = jasmine.createSpy();
         var $q;
         var deferred;
-        var loggedUserResolve = {
-            "data": {
-                "avatar": "res/photos/profile.jpg",
-                "name": "Wanderson Alves Ferreira",
-                "level": "20",
-                "title": "Brewmaster",
-                "currExp": 67
-            }
-        };
 
-        beforeEach(inject(function($templateCache, _$q_, $rootScope, $state, $controller, $mdSidenav, _SideMenuFactory_, _ProfileService_, _NavStats_) {
+        beforeEach(inject(function($templateCache, _$q_, $rootScope, $state, $controller, $mdSidenav, _SideMenuFactory_, _CurrentStateObserver_, _CurrentUserObserver_, _AuthService_) {
             $templateCache.put('/views/home-view.html', '');
             scope = $rootScope.$new();
+            AuthService = _AuthService_;
             $q = _$q_;
             deferred = _$q_.defer();
             mdSidenav = jasmine.createSpy().and.callFake(function() {
@@ -31,44 +24,51 @@
                 };
             });
             spyOn($state, 'go');
-            spyOn(_NavStats_, 'observeCurrentState').and.returnValue(deferred.promise);
+            spyOn(_CurrentStateObserver_, 'observeCurrentState').and.returnValue(deferred.promise);
+            spyOn(_CurrentUserObserver_, 'observeSideProfileStats').and.returnValue(deferred.promise);
+            spyOn(_AuthService_, 'login');
             navController = new $controller('NavigationController', {
                 $scope: scope,
                 $mdSidenav: mdSidenav,
                 SideMenuFactory: _SideMenuFactory_,
-                ProfileService: _ProfileService_,
-                NavStats: _NavStats_
+                CurrentStateObserver: _CurrentStateObserver_
             });
         }));
 
-        it("vm.currentState should be equal 'Home'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Home'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Home');
             scope.$apply();
             expect(navController.currentState).toEqual('Home');
         }));
 
-        it("vm.currentState should be equal 'Profile'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Profile'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Profile');
             scope.$apply();
             expect(navController.currentState).toEqual('Profile');
         }));
 
-        it("vm.currentState should be equal 'Bills'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Bills'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Bills');
             scope.$apply();
             expect(navController.currentState).toEqual('Bills');
         }));
 
-        it("vm.currentState should be equal 'Recomendations'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Recomendations'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Recomendations');
             scope.$apply();
             expect(navController.currentState).toEqual('Recomendations');
         }));
 
-        it("vm.currentState should be equal 'Configuration'", inject(function(_NavStats_) {
+        it("vm.currentState should be equal 'Configuration'", inject(function(_CurrentStateObserver_) {
             deferred.notify('Configuration');
             scope.$apply();
             expect(navController.currentState).toEqual('Configuration');
+        }));
+
+        it("Respond to notify on observeSideProfileStats", inject(function(_CurrentUserObserver_) {
+            deferred.notify(null);
+            scope.$apply();
+            expect(navController.currentUser).toEqual(null);
         }));
 
         it("goto fn should change $state to profile", inject(function($state) {
@@ -94,6 +94,11 @@
         it("when click on menu, should toggle sidenav", function() {
             navController.toggle();
             expect(toggleMock).toHaveBeenCalled();
+        });
+
+        it("should login user", function() {
+            navController.loginAuth0();
+            expect(AuthService.login).toHaveBeenCalled();
         });
     });
 

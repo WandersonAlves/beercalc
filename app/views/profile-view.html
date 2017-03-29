@@ -1,0 +1,14 @@
+<md-content layout-align="center center" layout="column">
+    <div ng-if="profileControll.currentUser" class="fade-element-in">
+        <img class="avatar-img" ng-src="{{profileControll.currentUser.avatar}}" />
+        <br/>
+        <div class="line-height-10">
+            <p>{{profileControll.currentUser.name}}</p>
+            <p>{{profileControll.currentUser.title}}</p>
+            <md-progress-linear md-mode="determinate" value="{{profileControll.currentUser.currExp}}"></md-progress-linear>
+        </div>
+    </div>
+    <div ng-if="!profileControll.currentUser" class="fade-element-in">
+        <p>Favor fazer login no menu lateral!!!</p>
+    </div>
+</md-content>
