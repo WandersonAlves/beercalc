@@ -10,6 +10,14 @@
     -moz-border-radius: 150px;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.line-height-10 {
+  line-height: 10px;
+}
+
 .fade-element-in.ng-enter {
   transition: 0.8s linear all;
   opacity: 0;

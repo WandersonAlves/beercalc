@@ -1,8 +1,8 @@
-<md-content layout-align="center center" layout="column">
+<md-content layout-align="right center" layout="column">
     <div ng-if="profileControll.currentUser" class="fade-element-in">
         <img class="avatar-img" ng-src="{{profileControll.currentUser.avatar}}" />
         <br/>
-        <div class="line-height-10">
+        <div class="line-height-10 text-center">
             <p>{{profileControll.currentUser.name}}</p>
             <p>{{profileControll.currentUser.title}}</p>
             <md-progress-linear md-mode="determinate" value="{{profileControll.currentUser.currExp}}"></md-progress-linear>
