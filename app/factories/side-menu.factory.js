@@ -8,23 +8,23 @@
 
 		function constructSideMenu() {
 			return [{
-					sref: 'home',
+					sref: 'main.home',
 					label: 'Home'
   			},
 				{
-					sref: 'profile',
+					sref: 'main.profile',
 					label: 'Perfil'
   			},
 				{
-					sref: 'bills',
+					sref: 'main.bills',
 					label: 'Contas'
   			},
 				{
-					sref: 'menu',
+					sref: 'main.menu',
 					label: 'Cardapios'
 				},
 				{
-					sref: 'recomendations',
+					sref: 'main.recomendations',
 					label: 'Recomendações'
   			}
   		];
