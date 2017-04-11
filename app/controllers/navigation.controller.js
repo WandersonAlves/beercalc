@@ -22,7 +22,7 @@
         vm.currentState = null;
 
         function loginAuth0() {
-          AuthService.login();
+            AuthService.login();
         }
 
         /**
@@ -61,6 +61,11 @@
          */
         var init = function() {
             vm.sideMenuOptions = SideMenuFactory.constructSideMenu();
+            if (localStorage.getItem('ALREADY_SHOW_WELCOME') == "false") {
+                vm.showWelcome = true;
+            } else {
+                vm.showWelcome = false;
+            }
         }();
 
         CurrentStateObserver.observeCurrentState().then(null, null, function(currentState) {

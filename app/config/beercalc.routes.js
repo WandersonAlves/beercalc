@@ -55,7 +55,7 @@
                 abstract: true,
                 templateUrl: '/views/main-view.html',
                 title: 'Teste'
-            }
+            };
 
         $urlRouterProvider.otherwise('/home');
         $stateProvider.state('main', mainState);
