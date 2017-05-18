@@ -67,6 +67,14 @@ Deploys are made in Travis CI (tool of choise for Continuous Integration) and de
 
 Coming soon...
 
+
+### TO-DO
+
+- Change UI/UX (currently, we use Angular Material. Keep Angular Material only for forms and labels)
+- Finish Intro Screen
+- Complete prototypes
+- Backend Architecture
+
 # Badges
 [![Code Climate](https://codeclimate.com/github/WandersonAlves/beercalc/badges/gpa.svg)](https://codeclimate.com/github/WandersonAlves/beercalc)
 [![Issue Count](https://codeclimate.com/github/WandersonAlves/beercalc/badges/issue_count.svg)](https://codeclimate.com/github/WandersonAlves/beercalc)
